@@ -1,0 +1,265 @@
+// let newCategoryInfo = {
+//     title: 'کالای دیجیتال',
+//     icon: 'fa-mobile-screen-button',
+//     href: '/main/electronic-devices/',
+//     subCategory: [{
+//         title: 'همه محصولات کالای دیجیتال',
+//         subcategoriesHrefTitle: '/main/electronic-devices/',
+//         subCategory: [
+//             {
+//                 title: 'لوازم جانبی گوشی',
+//                 subcategoriesHrefTitle: '/search/category-mobile-accessories/',
+//                 subCategories: [{
+//                     title: 'کیف وکاور گوشی',
+//                     href: '/search/category-cell-phone-pouch-cover/',
+//                 },
+//                 {
+//                     title: 'پاور بانک (شارژ همراه)',
+//                     href: '/search/category-power-bank/',
+//                 },
+//                 {
+//                     title: 'پایه نگهدارنده گوشی',
+//                     href: '/search/category-cell-phone-holder/',
+//                 }]
+//             },
+//             {
+//                 title: 'کتابخوان فیدیبوک',
+//                 subcategoriesHrefTitle: '/search/category-ebook-reader/?q=%D9%81%DB%8C%D8%AF%DB%8C%D8%A8%D9%88%DA%A9&entry=mm',
+//                 subCategories: []
+//             },
+//             {
+//                 title: 'گوشی موبایل',
+//                 subcategoriesHrefTitle: '/search/category-mobile-phone/',
+//                 subCategories: [{
+//                     title: 'گوشی اپل',
+//                     href: '/search/category-mobile-phone/apple/',
+//                 },
+//                 {
+//                     title: 'سامسونگ',
+//                     href: '/search/category-mobile-phone/samsung/',
+//                 },
+//                 {
+//                     title: 'شیائومی',
+//                     href: '/search/category-mobile-phone/xiaomi/',
+//                 },
+//                 {
+//                     title: 'آنر',
+//                     href: '/search/category-mobile-phone/honor/',
+//                 }]
+//             },
+//             {
+//                 title: 'لوازم جانبی دوربین',
+//                 subcategoriesHrefTitle: '/search/category-camera-accessories/',
+//                 subCategories: [{
+//                     title: 'لنز',
+//                     href: '/search/category-camera-lens/',
+//                 },
+//                 {
+//                     title: 'کیف',
+//                     href: '/search/category-camera-bag/',
+//                 },
+//                 {
+//                     title: 'کارت حافظه',
+//                     href: '/search/category-memory-cards/',
+//                 },
+//                 {
+//                     title: 'کاغذ چاپ عکس',
+//                     href: '/search/category-printer-paper/',
+//                 }]
+//             },
+//             {
+//                 title: 'ماشین‌های اداری',
+//                 subcategoriesHrefTitle: '/search/category-office-machines/',
+//                 subCategories: [{
+//                     title: 'تلفن، بی‌سیم و سانترال',
+//                     href: '/search/category-telephone/',
+//                 },
+//                 {
+//                     title: 'فکس',
+//                     href: '/search/category-fax/',
+//                 },
+//                 {
+//                     title: 'پرینتر',
+//                     href: '/search/category-printer/',
+//                 }]
+//             },
+//             {
+//                 title: 'لوازم جانبی اداری',
+//                 subcategoriesHrefTitle: '/search/category-office-accessories/',
+//                 subCategories: []
+//             }
+//         ]
+//     }],
+// }
+
+// let newCategory = new categoryModel(newCategoryInfo)
+
+// newCategory.save().then(() => {
+//     console.log('new category inserted')
+// })
+
+
+
+
+
+
+
+
+
+const mongoose = require('mongoose')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+// const usersRouter = require('./routes/usersRouter')
+const authRouter = require('./routes/authRouter')
+const usersRouter = require('./routes/usersRouter')
+const citiesRouter = require('./routes/citiesRouter')
+const menusRouter = require('./routes/menusRouter')
+const categoryRouter = require('./routes/CategoriesRouter')
+
+const categoryModel = require('./models/Categories')
+const usersModel = require('./models/Users')
+
+// let newCategoryInfo = {
+//     title: 'کالاهای سوپرمارکتی',
+//     icon: 'fa-basket-shopping',
+//     href: '/main/food-beverage/',
+//     subCategory: [{
+//         title: 'همه محصولات سوپرمارکتی',
+//         subcategoriesHrefTitle: '/main/food-beverage/',
+//         subCategory: [
+//             {
+//                 title: 'کالای اساسی و خوار و بار',
+//                 subcategoriesHrefTitle: '/search/category-groceries/',
+//                 subCategories: [
+//                     {
+//                         title: 'نان',
+//                         href: '/search/category-bread/',
+//                     },
+//                     {
+//                         title: 'برنج',
+//                         href: '/search/category-rice/',
+//                     },
+//                     {
+//                         title: 'روغن',
+//                         href: '/search/category-oil/',
+//                     },
+//                     {
+//                         title: 'قند',
+//                         href: '/search/category-sugar-cube/',
+//                     },
+//                     {
+//                         title: 'شکر',
+//                         href: '/search/category-sugar/',
+//                     },
+//                 ]
+//             },
+//             {
+//                 title: 'مواد پروتئینی',
+//                 subcategoriesHrefTitle: '/search/category-protein-foods/',
+//                 subCategories: [{
+//                     title: 'سوسیس و کالباس',
+//                     href: '/search/category-sausages/',
+//                 },
+//                 {
+//                     title: 'گوشت گوسفندی',
+//                     href: '/search/category-sheep-meat/',
+//                 },
+//                 {
+//                     title: 'گوشت مرغ',
+//                     href: '/search/category-chicken/'
+//                 }]
+//             },
+//             {
+//                 title: 'زیورآلات زنانه',
+//                 subcategoriesHrefTitle: '/search/category-women-jewelry/',
+//                 subCategories: [{
+//                     title: 'دستبند',
+//                     href: '/search/category-women-bracelet/',
+//                 },
+//                 {
+//                     title: 'گوشواره',
+//                     href: '/search/category-women-earrings/',
+//                 },
+//                 {
+//                     title: 'گردنبند',
+//                     href: '/search/category-women-necklace/',
+//                 }]
+//             },
+//             {
+//                 title: 'نوشیدنی‌ها',
+//                 subcategoriesHrefTitle: '/search/category-beverages/',
+//                 subCategories: [{
+//                     title: 'چای',
+//                     href: '/search/category-tea/',
+//                 },
+//                 {
+//                     title: 'دمنوش',
+//                     href: '/search/category-herbal-tea/',
+//                 },
+//                 {
+//                     title: 'قهوه',
+//                     href: '/search/category-coffee/',
+//                 }]
+//             },
+//             {
+//                 title: 'تنقلات',
+//                 subcategoriesHrefTitle: '/search/category-snacks/',
+//                 subCategories: [{
+//                     title: 'شکلات، تافی و آبنبات',
+//                     href: '/search/category-chocolate/',
+//                 },
+//                 {
+//                     title: 'بیسکوییت و ویفر',
+//                     href: '/search/category-biscuits-wafers/',
+//                 },
+//                 {
+//                     title: 'مغز طعمدار خشکبار',
+//                     href: '/search/category-nuts-trail-mix/',
+//                 }]
+//             },
+//             {
+//                 title: 'خشکبار و شیرینی',
+//                 subcategoriesHrefTitle: '/search/category-dried-fruit-nuts/',
+//                 subCategories: []
+//             }
+//         ]
+//     }],
+// }
+
+// let newCategory = new categoryModel(newCategoryInfo)
+// newCategory.save().then(() => {
+//     console.log('new category inserted')
+// })
+
+let newUserInfo = {
+    "username": "saba-omidfar",
+    "name": "saba omidfar",
+    "email": "saba2020@gmail.com",
+    "password": "saba2020",
+    "phone": "09385085806",
+}
+
+let newUser = new usersModel(newUserInfo)
+newUser.save().then(() => {
+    console.log('new user inserted')
+})
+
+const app = express()
+
+app.use(cors())
+app.use(bodyParser.json())
+
+app.use('/auth', authRouter)
+app.use('/users', usersRouter)
+app.use('/provinces', citiesRouter)
+app.use('/menus', menusRouter)
+app.use('/categories', categoryRouter)
+
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/digikala')
+mongoose.Promise = global.Promise
+
+app.listen(5000)
