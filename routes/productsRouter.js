@@ -261,6 +261,22 @@ productsRouter.get('/products/:categoryName', async (req, res) => {
     }
 })
 
+// Get Products By Category Name
+productsRouter.get('/products/subCategory/:categoryName', async (req, res) => {
+    try {
+        
+        const category = await megaMenusModel.findOne({ href: req.params.categoryName })
+
+        if (!category) {
+            return res.status(404).json({ message: 'Category not found' });
+        }
+        const products = await productsModel.find({ subSubmenu: category._id })
+        res.json(products)
+    } catch (err) {
+        res.status(500).json({ error: 'Error finding products by category', message: err.message })
+    }
+})
+
 // Get Products By Submenu ID
 productsRouter.get('/products/submenu/:submenuID', async (req, res) => {
     try {
