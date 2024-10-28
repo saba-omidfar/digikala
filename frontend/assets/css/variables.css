@@ -1,0 +1,12 @@
+:root {
+     --primary-color : "#e70000";
+     --icon-color: "#9e9fb1";
+     --color-white: #fff;
+     --color-black: #080a38;
+     /* --primary-font: "IRANSans"; */
+     --spacing-base: 4px;
+     --global-radius: 8px;
+     --small-radius: 4px;
+     --medium-radius: 8px;
+     --large-radius: 16px;
+}
