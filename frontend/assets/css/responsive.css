@@ -719,4 +719,8 @@
         width: 100px !important;
         margin: 0.3rem;
     }
+
+    .breadcrumb__link {
+        font-size: .6rem;
+    }
 }

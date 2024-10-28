@@ -85,7 +85,7 @@
 }
 
 .input-container {
-    background-color: #f1f2f4;
+    background-color: #f1f2f4 !important;
     border: none;
     outline: none;
     height: 2.7rem;
@@ -97,11 +97,28 @@
 
 .form-control:focus {
     box-shadow: none;
-    background-color: #f1f2f4;
+    background-color: #f1f2f4 !important;
+    border-color: #f1f2f4 !important;
 }
 
-.submit-email-btn {
-    background-color: #e0e0e6;
+.submit-email-btn,
+.submit-email-btn:hover {
+    background-color: #ef4056;
+    border: 1px solid #ef4056;
+    color: #fff;
+    font-size:.8rem;
+    font-weight: 700;
+    line-height: 2.15;
+    height: 2.7rem;
+    width: auto;
+    cursor: pointer;
+    align-items: center;
+    overflow: hidden;
+    transition: top .3s ease-in-out;
+}
+
+.disable-email-btn {
+    background-color: #e0e0e2;
     border: 1px solid #e0e0e6;
     color: #fff;
     font-size:.8rem;
@@ -113,6 +130,14 @@
     align-items: center;
     overflow: hidden;
     transition: top .3s ease-in-out;
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: #fff;
+    pointer-events: none;
+    background-color: #e0e0e2;
+    border-color: transparent;
+    opacity: 1;
 }
 
 .footer-logo-container {
@@ -239,3 +264,8 @@
 .footer-brand-item {
     height: 20px;
 }
+
+.helper--error {
+    color: #b2001a;
+}
+

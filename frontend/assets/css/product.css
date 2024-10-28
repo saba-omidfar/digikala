@@ -1333,7 +1333,7 @@
     width: 400px;
     max-height: 80vh;
     position: fixed;
-    inset: auto auto 0px 0px;
+    inset: auto auto -257px -2px;
     /* transform: translate3d(364px, -4px, 0px); */
     transform: translate3d(351px, -320px, 0);
     border: 1px solid #e0e0e6;

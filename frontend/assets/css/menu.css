@@ -365,12 +365,19 @@
 /* Start Menu Mobile Styles */
 
 .mobile-menu__wrapp {
-    right: 0;
+    /* right: 0; */
+    right: -2px;
     width: 312px;
     transform: translateX(400px);
     transition: transform .3s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 30;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .3);
+}
+
+.close-menu__btn-style {
+    color: #ef394e;
 }
 
 .mobile-menu__logo,
@@ -440,6 +447,10 @@
 }
 
 .mobile-submenu__child-link {
+    height: 52px;
+}
+
+.mobile-submenu__children {
     height: 52px;
 }
 

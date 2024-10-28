@@ -33,7 +33,6 @@ const getAndShowUserBasketinCartPage = async () => {
     const userBasketBadgeNumberContainer = document.querySelector('.cart-shopping__badge-count')
     const cartShoppingBadge = document.querySelector('#cart-shopping__badge')
     const cartShoppingContainer = document.querySelector('#cart-shopping__container')
-
     cartShoppingContainer.classList.add('ps-lg-3')
 
     userBasketBadgeNumberContainer.classList.remove('hidden')
@@ -62,6 +61,8 @@ const getAndShowUserBasketinCartPage = async () => {
 
     userBasketBadgeNumber.innerHTML = productsQuantity.toLocaleString('fa-IR')
     cartShoppingBasketBadge.innerHTML = productsQuantity.toLocaleString('fa-IR')
+    // totalPurchasePriceMobile.innerHTML = totalPrice
+    console.log(totalPrice);
 
 
     userBasketProductContainer.innerHTML = ''
@@ -194,6 +195,7 @@ const showEmptyCart = () => {
     const cartPriceContainer = document.querySelector('#cart-price-container')
     const userBasketBadgeNumberContainer = document.querySelector('.cart-shopping__badge-count')
     const cartShoppingBadge = document.querySelector('#cart-shopping__badge')
+    const cartBoxBottom = document.querySelector('.cart__box-bottom')
 
     userBasketBadgeNumberContainer.classList.add('hidden')
     cartPriceContainer.classList.add('hidden')
@@ -202,6 +204,7 @@ const showEmptyCart = () => {
     emptyCartContainer.classList.remove('hidden')
 
     cartShoppingContainer.classList.remove('ps-lg-3')
+    cartBoxBottom.classList.add('hidden')
 
     emptyCartContainer.innerHTML = ''
     emptyCartContainer.insertAdjacentHTML('beforeend', `
@@ -639,6 +642,8 @@ const hideQuantityBadge = event => {
 const getAndShowcartChoppingMiniBox = async (basket) => {
 
     const cartPriceContainer = document.querySelector('#cart-shopping__mini-box')
+    const totalPurchasePriceMobile = document.querySelector('#total-purchase-price__mobile')
+    const cartBoxBottom = document.querySelector('.cart__box-bottom')
 
     let totalPrice = 0
     let totalPriceWithDiscount = 0
@@ -655,6 +660,7 @@ const getAndShowcartChoppingMiniBox = async (basket) => {
     })
 
     if (isUserLogin) {
+      
         cartPriceContainer.innerHTML = ''
         cartPriceContainer.insertAdjacentHTML('beforeend', `
                 <div class="px-3">
@@ -745,16 +751,19 @@ const getAndShowcartChoppingMiniBox = async (basket) => {
                             <span class="color-800 text-subtitle-strong ms-1">۱۴۰</span>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-1">امتیاز</span>
+                                    <span class="mr-1 product-price__toman">امتیاز</span>
                                 </div>
                             </div>
                         </div>
                     
                 </div>
         `)
+
+        cartBoxBottom.classList.remove('hidden')
+        totalPurchasePriceMobile.innerHTML = totalPriceWithDiscount.toLocaleString('fa-IR')
     } else {
         cartPriceContainer.innerHTML = ''
-        cartPriceContainer.insertAdjacentHTML('beforeend', `salam`)
+        cartBoxBottom.classList.add('hidden')
     }
 }
 

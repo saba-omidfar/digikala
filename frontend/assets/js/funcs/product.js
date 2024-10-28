@@ -62,7 +62,13 @@ const getAndShowProductDetails = async () => {
     const specificAttributeWrapper = document.querySelector('#specific-attribute')
     const specificAttributeContainer = document.querySelector('.specific-attribute-container')
     const breadcrumbListContainer = document.querySelector('#breadcrumb__list-container')
+    const feedbackTextGroup = document.querySelector('#feedback-text-group')
+    const productIntroduct = document.querySelector('#product-introduction')
+    const productIntroductionTitle = document.querySelector('#product-introduction-title')
+    const selectColorElem = document.querySelector('#select-color')
+    const productAttributes = document.querySelector('#product-attributes')
 
+    selectColorElem.innerHTML = ''
     let allComments = []
 
     const productShortName = getUrlParam('name')
@@ -70,6 +76,8 @@ const getAndShowProductDetails = async () => {
 
     const res = await fetch(`http://localhost:5000/product/name/${productShortName}`)
     const product = await res.json()
+
+    feedbackTextGroup.innerHTML = `درخواست مرجوع کردن کالا در گروه ${product.categoryID.name} با دلیل "انصراف از خرید" تنها در صورتی قابل تایید است که کالا در شرایط اولیه باشد (در صورت پلمپ بودن، کالا نباید بازشده باشد).`
 
     if (isUserLogin) {
         const userID = getUserID()
@@ -197,7 +205,9 @@ const getAndShowProductDetails = async () => {
         })
     } else {
         productIntroduction.classList.add('hidden')
+        productIntroduct.classList.add('hidden')
         productIntroductionTitle.classList.add('hidden')
+        productAttributes.classList.remove('bt-8')
     }
 
     productAttributesContainer.innerHTML = ''
@@ -379,9 +389,6 @@ const getAndShowStickyMiniBuyBox = async (product) => {
             <div class="d-flex align-items-center py-2 mx-3 mx-lg-0">
                 <div class="d-flex align-items-center justify-content-center ms-2 incredible-offers">
                     <img src="assets/covers/IncredibleOffer.svg" class="w-100 object-fit-contain d-inline-block h-100" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-center mt-1 me-5 me-auto me-lg-3 me-auto">
-                    <span class="product-offer__timing">۴۰ : ۰۵ : ۱۶ : ۱</span>
                 </div>
             </div>
             <div class="d-flex pb-3 mb-3 border-bottom-1-e6">
@@ -588,14 +595,13 @@ const getAndShowSimilarProducts = async (productID) => {
                                 <div class="d-flex flex-column align-items-stretch justify-content-start">
                                     <div class="pt-1 d-flex flex-column align-items-stretch justify-content-between">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            ${
-                                                similarProduct.discount === 0 ?
-                                                ``
-                                                :
-                                                `<div class="px-1 text-white d-flex align-items-center justify-content-center flex-shrink-0 me-lg-1 me-0 product-price__discount-wrapp">
+                                            ${similarProduct.discount === 0 ?
+                    ``
+                    :
+                    `<div class="px-1 text-white d-flex align-items-center justify-content-center flex-shrink-0 me-lg-1 me-0 product-price__discount-wrapp">
                                                     <span class="product-price__discount-text px-1">${similarProduct.discount.toLocaleString('fa-IR')}٪</span>
                                                 </div>`
-                                            }
+                }
                                             <div class="d-flex justify-content-end align-items-center">
                                                 <span class="ms-1 product-price">${(similarProduct.price - ((similarProduct.price * similarProduct.discount) / 100)).toLocaleString('fa-IR')}</span>
                                                 <div class="d-flex me-1">
@@ -603,14 +609,13 @@ const getAndShowSimilarProducts = async (productID) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        ${
-                                            similarProduct.discount === 0 ?
-                                            ``
-                                            :
-                                            `<div class="d-flex justify-content-end align-items-center ps-3">
+                                        ${similarProduct.discount === 0 ?
+                    ``
+                    :
+                    `<div class="d-flex justify-content-end align-items-center ps-3">
                                                 <div class="product-prev-price me-1">${similarProduct.price.toLocaleString('fa-IR')}</div>
                                             </div>`
-                                        }
+                }
                                         <div class="mt-auto">
                                             <div>
                                                 <div class="position-relative loading-wrapp">
@@ -942,17 +947,16 @@ const insertCommentsBoxHtmlTemplate = (shownComments) => {
         shownComments.forEach(comment => {
             productCommentsContainer.insertAdjacentHTML('beforeend', `
                        <article class="bb py-3 mt-lg-0 d-flex align-items-stretch">
-                       ${
-                            comment.score > 3 ?
-                            `<div class="ms-2 mt-1 comment-rate">
+                       ${comment.score > 3 ?
+                    `<div class="ms-2 mt-1 comment-rate">
                                 <div class="p-1 d-flex justify-content-center align-items-center px-2 comment-rate__main">${new Intl.NumberFormat('fa-IR').format(comment.score)}.${new Intl.NumberFormat('fa-IR').format(0)}</div>
                             /</div>`
-                            :
-                            `
+                    :
+                    `
                             <div class="ms-2 mt-1">
                                <div class="p-1 d-flex justify-content-center align-items-center px-2 comment-hint__main">${new Intl.NumberFormat('fa-IR').format(comment.score)}.${new Intl.NumberFormat('fa-IR').format(0)}</div>
                            </div>`
-                       }
+                }
                            <div class="w-100 d-flex align-items-center justify-content-between">
                                <div class="w-100">
                                ${comment.title ? `<p class="comment-rate__text pb-3">${comment.title}</p>` : `<p class="comment-rate__text hidden pb-3"></p>`}
@@ -1090,17 +1094,16 @@ const insertCommentsBoxHtmlTemplate = (shownComments) => {
             shownComments.forEach(comment => {
                 productCommentsContainer.insertAdjacentHTML('beforeend', `
                 <article class="bb py-3 mt-lg-0 d-flex align-items-stretch">
-                ${
-                    comment.score > 3 ?
-                    `<div class="ms-2 mt-1 comment-rate">
+                ${comment.score > 3 ?
+                        `<div class="ms-2 mt-1 comment-rate">
                         <div class="p-1 d-flex justify-content-center align-items-center px-2 comment-rate__main">${new Intl.NumberFormat('fa-IR').format(comment.score)}.${new Intl.NumberFormat('fa-IR').format(0)}</div>
                     </div>`
-                    :
-                    `
+                        :
+                        `
                     <div class="ms-2 mt-1">
                        <div class="p-1 d-flex justify-content-center align-items-center px-2 comment-hint__main">${new Intl.NumberFormat('fa-IR').format(comment.score)}.${new Intl.NumberFormat('fa-IR').format(0)}</div>
                    </div>`
-               }
+                    }
                     <div class="w-100 d-flex align-items-center justify-content-between">
                         <div class="w-100">
                         ${comment.title ? `<p class="comment-rate__text pb-3">${comment.title}</p>` : `<p class="comment-rate__text hidden pb-3"></p>`}
@@ -1593,9 +1596,8 @@ const getAndShowMiniBuyBoxDetails = async (productSellersID, product) => {
         <div class="d-flex">
             <p class="color-primary-500 text-caption">تنها ${product.stock.toLocaleString('fa-IR')} عدد در انبار باقی مانده</p>
         </div>
-        ${
-            isUserBuyThisProduct?
-                `<div class="d-flex align-items-center">
+        ${isUserBuyThisProduct ?
+            `<div class="d-flex align-items-center">
                     <div class="d-flex align-items-center justify-content-between px-2 item-quantity__container" style="min-width: 50%">
                         <div class="d-flex pointer" onclick='addProductToUserBasket(${JSON.stringify(product)})'>
                             <i class="item-quantity__icon fa fa-plus"></i>
@@ -1607,18 +1609,18 @@ const getAndShowMiniBuyBoxDetails = async (productSellersID, product) => {
                         </span>
                         <div class="d-flex align-items-center pointer">
                             ${mainProduct ?
-                            (mainProduct.quantity === 1 ?
-                                `<i class="item-quantity__icon fa fa-trash" onclick='deleteProductFromBasket(${JSON.stringify(product._id)})'></i>`
-                                :
-                                `<i class="item-quantity__icon fa fa-minus" onclick='decreaseProductQuantity(${JSON.stringify(product._id)})'></i>`)
-                            :
-                                `<div class="d-flex align-items-center" onclick='addProductToUserBasket(${JSON.stringify(product)})'>
+                (mainProduct.quantity === 1 ?
+                    `<i class="item-quantity__icon fa fa-trash" onclick='deleteProductFromBasket(${JSON.stringify(product._id)})'></i>`
+                    :
+                    `<i class="item-quantity__icon fa fa-minus" onclick='decreaseProductQuantity(${JSON.stringify(product._id)})'></i>`)
+                :
+                `<div class="d-flex align-items-center" onclick='addProductToUserBasket(${JSON.stringify(product)})'>
                                     <button class="buy-box__btn-wrapp position-relative d-flex align-items-center d-flex-lg w-100">
                                         <div class="d-flex align-items-center justify-content-center position-relative flex-grow-1">
                                             افزودن به سبد</div>
                                     </button>
                                 </div>`
-                            }     
+            }     
                         </div>
                     </div>
                     <div class="d-flex justify-content-start flex-column align-items-end me-auto text-h4 pe-3">
@@ -1636,8 +1638,8 @@ const getAndShowMiniBuyBoxDetails = async (productSellersID, product) => {
                         </div>
                     </div>
                 </div>`
-                :
-                `<div class="d-flex align-items-center" onclick='addProductToUserBasket(${JSON.stringify(product)})'>
+            :
+            `<div class="d-flex align-items-center" onclick='addProductToUserBasket(${JSON.stringify(product)})'>
                     <button class="buy-box__btn-wrapp w-50 align-items-center justify-content-center d-lg-flex">
                         <div class="d-flex align-items-center justify-content-center text-caption text-center">افزودن به سبد خرید</div>
                     </button>
@@ -1856,8 +1858,8 @@ const getValueFromTextarea = event => {
 
     const questionLength = document.querySelector('#question-length')
 
-     // Handle MaxLength
-     if (event.code === 'Backspace') {
+    // Handle MaxLength
+    if (event.code === 'Backspace') {
         if (questionLength.innerHTML !== '0') {
             questionLength.innerHTML = --(questionLength.innerHTML)
         }
@@ -1867,11 +1869,11 @@ const getValueFromTextarea = event => {
 }
 
 const addFirstQuestion = async () => {
-    
+
     const isUserLogin = isLogin()
 
     if (isUserLogin) {
-       
+
         const questionTextarea = document.querySelector('.question_textarea')
 
         if (questionTextarea.value) {
@@ -1937,16 +1939,18 @@ const showCommentModal = async () => {
         commentModalProductName.innerHTML = ''
         commentModalProductName.innerHTML = product.name
 
-        noUiSlider.create(slider, {
-            start: [0],
-            step: 5,
-            range: {
-                'min': [0],
-                'max': [25]
-            },
-            direction: 'rtl',
-            connect: [true, false]
-        })
+        if (!slider.noUiSlider) {
+            noUiSlider.create(slider, {
+                start: [0],
+                step: 5,
+                range: {
+                    'min': [0],
+                    'max': [25]
+                },
+                direction: 'rtl',
+                connect: [true, false]
+            })
+        }
 
         // Update Slider 
         slider.noUiSlider.on('update', function (values, handle) {
@@ -1999,7 +2003,6 @@ const showCommentModal = async () => {
             }
 
             addComment(newCommentInfoObject)
-
         })
 
     } else {
@@ -2030,6 +2033,7 @@ const addComment = async (commentInfo) => {
             'تایید',
             () => {
                 closeCommentnModal()
+                clearCommentInputs()
                 getAndShowComments()
             }
         )
@@ -2058,6 +2062,22 @@ const addQuestion = async (questionInfo) => {
             }
         )
     }
+}
+
+const clearCommentInputs = () => {
+
+    let slider = document.getElementById('no-ui-target')
+    const commentScoreText = document.querySelector('#comment__score-text')
+    const commentTextarea = document.querySelector('.comment__textarea')
+    const commentTitle = document.querySelector('#comment-title')
+
+    slider.noUiSlider.set(0)
+    commentScoreText.innerHTML = ''
+    commentTextarea.value = ''
+    commentTitle.value = ''
+    positivePointsContainer.innerHTML = ''
+    negativePointsContainer.innerHTML = ''
+    commentCheckboxInput.checked = false
 }
 
 const closeCommentnModal = () => {
@@ -2168,8 +2188,8 @@ addCommentBtn.addEventListener('click', showCommentModal)
 
 window.addEventListener('scroll', () => {
 
-    if (isScrollingDueToClick ) return
-    
+    if (isScrollingDueToClick) return
+
     // Get all sections
     const sections = document.querySelectorAll('.tab-item')
 
@@ -2198,7 +2218,7 @@ window.addEventListener('scroll', () => {
 })
 
 
-window.removeremoveNegativePoint = removeNegativePoint
+window.removeNegativePoint = removeNegativePoint
 window.removePositivePoint = removePositivePoint
 window.selectColor = selectColor
 window.likeComment = likeComment

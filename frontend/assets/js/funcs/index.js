@@ -347,7 +347,6 @@ const getAndShowAllPopularBrands = async () => {
 
 const getAndShowUserBasketModalInOtherPages = async () => {
 
-
     if (isUserLogin) {
 
         const userID = getUserID()
@@ -361,7 +360,6 @@ const getAndShowUserBasketModalInOtherPages = async () => {
     } else {
         showEmptyBasket()
     }
-
 }
 
 const addProductToUserBasket = async (product) => {

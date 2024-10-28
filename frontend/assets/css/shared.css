@@ -20,7 +20,7 @@
     bottom: 95px;
     width: max-content;
     max-width: 100%;
-    z-index: 20;
+    z-index: 23;
 }
 
 .support-modal__content {
@@ -58,7 +58,7 @@
 
 .support-chat-question-title {
     text-align: right;
-    font-size: .9rem;
+    font-size: .85rem;
     font-weight: 700;
     line-height: 2.15;
     cursor: pointer;
@@ -75,6 +75,10 @@
     border-radius: 2.5rem;
     outline: none;
     cursor: pointer;
+}
+
+.support-chat__answer {
+    font-size: .75rem;
 }
 
 .support-icon__wrapp {
@@ -445,7 +449,7 @@ form {
     max-height: 80vh;
     overflow-y: auto;
     border-top: 0;
-    z-index: 1;
+    z-index: 31;
 }
 
 

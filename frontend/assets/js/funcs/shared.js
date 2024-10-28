@@ -1,17 +1,46 @@
 import { getMe } from "./auth.js";
-import { isLogin, searchInArray } from "./utils.js";
+import { isLogin, searchInArray, showSwal } from "./utils.js";
 
 const searchInput = document.querySelector('.search-input')
 const topBarSearchBoxWrapper = document.querySelector('.top-bar__searchBox-wrapp')
 const topBarSearchBoxIcon = document.querySelector('.top-bar__searchBox-icon')
 const searchInputBox = document.querySelector('.search-input__box')
 const backToUpBtn = document.querySelector('.back-to-up-btn')
+const submitEmailForm = document.querySelector('#submit-email')
+const submitEmailInputElem = document.querySelector('#submit-email__input')
+const mobileMenuCategoryWrapper = document.querySelector('#mobile-menu-category__wrapper')
+const mobileMenuWrapper = document.querySelector('.mobile-menu__wrapp')
+const mobileMenuIconBar = document.querySelector('.mobile-menu__icon-bar')
+const closeMenuBtn = document.querySelector('.close-menu__btn')
 
+const openMenuBurgerHandler = () => {
+    mobileMenuWrapper.style.transform = "translateX(0px)"
+}
+
+const closeMenuBurgerHandler = () => {
+    mobileMenuWrapper.style.transform = "translateX(400px)"
+}
 
 const showUserNameInNavbar = async () => {
 
     const navbarProfileBox = document.querySelector('#navbar-phone')
     const isUserLogin = isLogin()
+    let currentUrl = window.location.pathname
+    let href, imageSrc
+
+    if (currentUrl === '/frontend/checkout/cart.html') {
+        href = '../users/login.html'
+        imageSrc = '../assets/covers/club-point.svg'
+    } else if (currentUrl === '/frontend/index.html') {
+        href = 'users/login.html'
+        imageSrc = 'assets/covers/club-point.svg'
+    } else if (currentUrl === '/frontend/product-list.html') {
+        href = 'users/login.html'
+        imageSrc = 'assets/covers/club-point.svg'
+    } else if (currentUrl === '/frontend/product.html') {
+        href = 'users/login.html'
+        imageSrc = 'assets/covers/club-point.svg'
+    }
 
     if (isUserLogin) {
 
@@ -41,7 +70,7 @@ const showUserNameInNavbar = async () => {
                                     <div>
                                         <div style="width: 24px; height: 24px; line-height: 0;">
                                             <img class="w-100 d-inline-block object-fit-contain"
-                                                src="../assets/covers/club-point.svg" width="24" height="24" alt="دیجی‌کلاب">
+                                                src="${imageSrc}" width="24" height="24" alt="دیجی‌کلاب">
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +189,7 @@ const showUserNameInNavbar = async () => {
 
         navbarProfileBox.innerHTML = ''
         navbarProfileBox.insertAdjacentHTML('beforebegin', `
-            <a href="users/login.html">
+            <a href="${href}">
                 <button class="top-bar__login-btn ms-2">
                     <div class="d-flex align-items-center justify-content-center">
                         <div class="d-flex ms-2 fs-6">
@@ -235,15 +264,15 @@ const getAndShowAllMegaMenus = async () => {
                     ${megaMenu.submenus.length !== 0 ?
                 `${megaMenu.submenus.map(submenus => (
                     `<a href="${submenus.href}" class="subCategory-item__title d-flex align-items-center position-relative mt-1">
-                                    <span class="subCategory-item__name position-relative">${submenus.title}</span>
-                                    <div class="d-flex position-relative">
-                                        <i class="color-1000 subCategory-title-icon fa-solid fa-chevron-left"></i>
-                                    </div>
-                                </a>
-                                ${submenus.submenus.map(submenu => (
+                                <span class="subCategory-item__name position-relative">${submenus.title}</span>
+                                <div class="d-flex position-relative">
+                                    <i class="color-1000 subCategory-title-icon fa-solid fa-chevron-left"></i>
+                                </div>
+                            </a>
+                            ${submenus.submenus.map(submenu => (
                         `<a href="${submenu.href}" class="subCategory-item align-items-center position-relative mt-2">
-                                        <span class="subCategory-item__text position-relative">${submenu.title}</span>
-                                    </a>`
+                                    <span class="subCategory-item__text position-relative">${submenu.title}</span>
+                                </a>`
                     )).join('')
                     }`
                 )).join('')
@@ -255,92 +284,6 @@ const getAndShowAllMegaMenus = async () => {
         `)
     })
 }
-
-// const getAndShowAllProducts = async () => {
-
-//     const productListContainer = document.querySelector('.product-list__container')
-
-//     const res = await fetch(`http://localhost:5000/products`)
-//     const products = await res.json()
-
-//     products.forEach(product => {
-//         productListContainer.insertAdjacentHTML('beforeend', `
-//             <div class="product-list__item p-0 col-xxl-3 col-lg-6 col-md-6 col-12">
-//                 <div class="h-100">
-//                     <a href="#" class="product-list__item-link h-100 d-block position-relative bg-white overflow-hidden flex-grow-1 py-3 px-4 px-lg-2">
-//                         <div>
-//                             <article class="overflow-hidden d-flex flex-column align-items-stretch justify-content-start h-100">
-//                                 <div class="d-flex align-items-center justify-content-start mb-1">
-//                                     <div class="ms-1" style="width: 116px; height: 14px;">
-//                                         <img class="w-100 object-fit-contain d-inline-block" src="assets/images/incredible.svg" alt="">
-//                                     </div>
-//                                 </div>
-//                                 <div class="d-flex flex-grow-1 flex-column">
-//                                     <div class="d-flex align-items-stretch flex-column mb-1">
-//                                         <div class="position-relative d-flex align-items-start mx-auto">
-//                                             <div style="width: 240px; height: 240px;">
-//                                                 <img class="w-100 d-inline-block object-fit-contain" src="assets/covers/${product.images[0].url}" alt="">
-//                                             </div>
-//                                             <div class="position-absolute add-red-icon-wrapp">
-//                                                 <div class="red-border">
-//                                                     <div class="d-flex align-items-center justify-content-center">
-//                                                         <i class="add-red-icon fa-solid fa-plus"></i>
-//                                                     </div>
-//                                                 </div>
-//                                             </div>
-//                                         </div>
-//                                     </div>
-//                                     <div class="flex-grow-1 d-flex flex-column align-items-stretch justify-content-start">
-//                                         <div class="d-flex align-items-center justify-content-start flex-wrap mb-1">
-//                                             <br>
-//                                         </div>
-//                                         <div>
-//                                             <h3 class="text-body2-strong color-700 vertical-product-card__title">${product.name}</h3>
-//                                         </div>
-//                                         <div class="mb-1 d-flex align-items-center justify-content-between">
-//                                             <div class="d-flex align-items-center">
-//                                                 <div class="d-flex ms-1">
-//                                                     <i class="fa fa-truck supermarket-icon"></i>
-//                                                 </div>
-//                                                 <p class="text-caption color-600">ارسال سریع سوپرمارکتی</p>
-//                                             </div>
-//                                             <div class="d-flex align-items-center">
-//                                                 <p class="text-body2-strong color-700">۴.۵</p>
-//                                                 <div class="d-flex me-2">
-//                                                     <i class="fa fa-star rating-icon"></i>
-//                                                 </div>
-//                                             </div>
-//                                         </div>
-//                                         <div class="pt-1 d-flex flex-column align-items-stretch justify-content-between">
-//                                             <div class="d-flex align-items-center justify-content-between">
-//                                                 <div class="px-2 text-white d-flex align-items-center justify-content-center product-price__discount-wrapp">
-//                                                     <span class="text-body2-strong">۱۳٪</span>
-//                                                 </div>
-//                                                 <div class="d-flex align-items-center justify-content-end flex-grow-1">
-//                                                     <span class="color-700 color-400 text-h5">۸۳,۳۰۰</span>
-//                                                     <div class="d-flex me-1">
-//                                                         <span class="text-body-3  color-700">تومان</span>
-//                                                     </div>
-//                                                 </div>
-//                                             </div>
-//                                             <div class="d-flex align-items-center justify-content-between ps-3">
-//                                                 <div class="selected-product__prevPrice me-auto color-300 text-caption">
-//                                                     ۹۶,۳۰۰</div>
-//                                             </div>
-//                                             <div class="product-promotion-Timeline__timer d-flex me-auto justify-content-end">
-//                                                 19:32:45
-//                                             </div>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                             </article>
-//                         </div>
-//                     </a>
-//                 </div>
-//             </div>
-//         `)
-//     })
-// }
 
 const getUserBasketCountAndShowModal = async (userBasketCount) => {
 
@@ -358,6 +301,19 @@ const showEmptyBasket = () => {
     const cartShoppingModal = document.querySelector('#cart-shopping__modal')
     const userBasketBadgeNumberContainer = document.querySelector('.cart-shopping__badge-count')
     userBasketBadgeNumberContainer.classList.add('hidden')
+
+    let currentUrl = window.location.pathname
+    let href
+
+    if (currentUrl === '/frontend/checkout/cart.html') {
+        href = '../users/login.html'
+    } else if (currentUrl === '/frontend/index.html') {
+        href = 'users/login.html'
+    } else if (currentUrl === '/frontend/product-list.html') {
+        href = 'users/login.html'
+    } else if (currentUrl === '/frontend/product.html') {
+        href = 'users/login.html'
+    }
 
     const isUserLogin = isLogin()
 
@@ -386,19 +342,19 @@ const showEmptyBasket = () => {
             </div>
         </div>
         <div class="border-top-1 d-flex align-items-center py-2 px-3 border-t">
-            ${isUserLogin?
+            ${isUserLogin ?
             `<a href="./index.html" class="cart-shopping__login-btn position-relative d-flex align-items-center me-auto">
                 <div class="d-flex justify-content-center align-items-center position-relative flex-grow-1">
                     ثبت سفارش
                 </div>
             </a>`
             :
-            `<a href="../users/login.html" class="cart-shopping__login-btn position-relative d-flex align-items-center me-auto">
+            `<a href="${href}" class="cart-shopping__login-btn position-relative d-flex align-items-center me-auto">
                 <div class="d-flex justify-content-center align-items-center position-relative flex-grow-1">
                     ورود و ثبت سفارش
                 </div>
             </a>`
-            }
+        }
         </div>
     `)
 }
@@ -445,7 +401,6 @@ const showBasketBoxModalInNavbar = (userBasketCount) => {
             </button>
         </div>
     `)
-
 
     const cartShoppingiItemsContainer = document.querySelector('#cart-shopping-items__container')
 
@@ -640,68 +595,14 @@ searchInput.addEventListener('input', function () {
                                                             <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
                                                                 href="#">
                                                                 <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
+                                                                    <span>مداد چشم یورن مدل 01</span>
                                                                     <div class="d-flex pointer me-2">
                                                                         <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
                                                                     </div>
                                                                 </div>
                                                             </a>
                                                         </div>
-                                                        <div class="swiper-slide">
-                                                            <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                                href="#">
-                                                                <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
-                                                                    <div class="d-flex pointer me-2">
-                                                                        <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                                href="#">
-                                                                <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
-                                                                    <div class="d-flex pointer me-2">
-                                                                        <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                                href="#">
-                                                                <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
-                                                                    <div class="d-flex pointer me-2">
-                                                                        <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                                href="#">
-                                                                <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
-                                                                    <div class="d-flex pointer me-2">
-                                                                        <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                                href="#">
-                                                                <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                    <span>شیر رادیاتور</span>
-                                                                    <div class="d-flex pointer me-2">
-                                                                        <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
+                                                    </div>
                                                 </div>
         
                                                     <!-- If we need navigation buttons -->
@@ -909,68 +810,14 @@ window.addEventListener('load', function () {
                                                         <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
                                                             href="#">
                                                             <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
+                                                                <span>مداد چشم یورن مدل 01</span>
                                                                 <div class="d-flex pointer me-2">
                                                                     <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
                                                                 </div>
                                                             </div>
                                                         </a>
                                                     </div>
-                                                    <div class="swiper-slide">
-                                                        <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                            href="#">
-                                                            <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
-                                                                <div class="d-flex pointer me-2">
-                                                                    <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                            href="#">
-                                                            <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
-                                                                <div class="d-flex pointer me-2">
-                                                                    <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                            href="#">
-                                                            <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
-                                                                <div class="d-flex pointer me-2">
-                                                                    <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                            href="#">
-                                                            <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
-                                                                <div class="d-flex pointer me-2">
-                                                                    <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a class="popular-search__item-link py-1 d-inline-block flex-shrink-0"
-                                                            href="#">
-                                                            <div class="d-flex align-items-center h-100 px-3 xs:pl-1 text-body2-strong">
-                                                                <span>شیر رادیاتور</span>
-                                                                <div class="d-flex pointer me-2">
-                                                                    <i class="fa fa-chevron-left" style="width: 14px; height: 14px;"></i>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                </div>
                                             </div>        
                                                 <!-- If we need navigation buttons -->
                                                 <div class="swiper-button-prev swiper-button-prev11">
@@ -1015,7 +862,6 @@ window.addEventListener('load', function () {
     swiper11.update()
 })
 
-
 // Handle Seacrh Input
 searchInput.addEventListener('focus', function (event) {
     if (event.currentTarget.id === 'products-search__input') {
@@ -1046,7 +892,162 @@ document.addEventListener('click', function (event) {
     }
 })
 
+// Handle Submit Email
+submitEmailForm.addEventListener("input", event => {
 
+    const button = document.querySelector('.submit-email-button')
+    const helperError = document.querySelector('.helper--error')
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+    if (emailRegex.test(submitEmailInputElem.value)) {
+
+        helperError.classList.add('hidden')
+        button.classList.remove("disabled")
+        button.classList.remove("disable-email-btn")
+        button.classList.add("submit-email-btn")
+
+        button.addEventListener('click', event => {
+            event.preventDefault()
+            showSwal(
+                'ایمیل شما با موفقیت ثبت شد',
+                'success',
+                'ok',
+                () => {
+                    submitEmailInputElem.value = ''
+                    button.classList.add("disabled")
+                    button.classList.add("disable-email-btn")
+                    button.classList.remove("submit-email-btn")
+                }
+            )
+        })
+
+    } else {
+        helperError.classList.remove('hidden')
+        button.classList.add("disabled")
+        button.classList.add("disable-email-btn")
+        button.classList.remove("submit-email-btn")
+    }
+})
+
+const showCategoriesInMobileVersion = async () => {
+
+    const res = await fetch(`http://localhost:5000/megaMenus`)
+    const categories = await res.json()
+
+    mobileMenuCategoryWrapper.innerHTML = ''
+    categories.forEach(category => {
+        mobileMenuCategoryWrapper.insertAdjacentHTML('beforeend',
+            `<a href="#" class="mobile-submenu__link d-flex align-items-center justify-content-center px-3">
+                <div class="d-flex align-items-center flex-grow-1">
+                    <span class="mobile-submenu__text">${category.title}</span>
+                </div>
+                <div>
+                    <div class="d-flex show-submenu-icon">
+                        <i class="mobile-submenu__icon fa fa-chevron-down" data-category="mobile"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- زیرمجموعه -->
+            <div class="mobile-submenu__child hidden">
+                <div class="pe-3">
+                    ${category.submenus.length !== 0 ?
+                `<a href="product-list.html?cat=${category.href}"" class="mobile-submenu__child-title text-white d-flex align-items-center justify-content-between px-3">
+                            <div class="d-flex align-items-center flex-grow-1">
+                                <span class="mobile-submenu__child-title-text">همه محصولات ${category.title}</span>
+                                <div class="d-flex">
+                                    <i class="mobile-submenu__child-title-icon me-2 fa fa-chevron-left"></i>
+                                </div>
+                            </div>
+                        </a>`
+                :
+                `<a href="#" class="mobile-submenu__child-title text-white d-flex align-items-center justify-content-between px-3">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <span class="mobile-submenu__child-title-text">زیرمجموعه‌ای برای این دسته‌بندی وجود ندارد</span>
+                        </div>
+                    </a>`
+            }
+                    <!-- زیرمجموعه -->
+                    <div>
+                    ${category.submenus.length !== 0 ?
+                `${category.submenus.map(submenu => (
+                    `<a href="product-list.html?cat=${submenu.href}" class="mobile-submenu__child-link text-white d-flex align-items-center justify-content-between px-3 mobile-submenu__child-btn">
+                                <div class="d-flex align-items-center flex-grow-1">
+                                    <span class="mobile-submenu__child-text flex-grow-1">${submenu.title}</span>
+                                    <div class="d-flex">
+                                        <i class="mobile-submenu__child-icon fa fa-chevron-down"></i>
+                                        <i class="mobile-submenu__child-icon fa fa-chevron-up hidden"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="mobile-submenu__child-2 hidden">
+                                <div class="pe-3">
+                                ${submenu.submenus.length !== 0 ?
+                        `<a href="#" class="mobile-submenu__child-title text-white d-flex align-items-center justify-content-between px-3">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <span class="mobile-submenu__child-title-text ">همه موارد این دسته</span>
+                                            <div class="d-flex">
+                                                <i class="mobile-submenu__child-title-icon me-2 fa fa-chevron-left"></i>
+                                            </div>
+                                        </div>
+                                    </a>`
+                        :
+                        `<a href="#" class="mobile-submenu__child-link text-white d-flex align-items-center justify-content-between px-4">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <span class="mobile-submenu__child-text fw-light flex-grow-1">زیرمجموعه‌ای وجود ندارد</span>
+                                        </div>
+                                    </a>`
+                    }
+                                    
+                                    ${submenu.submenus.length !== 0 ?
+                        `${submenu.submenus.map(sub => (
+                            `<a href="product-list.html?cat=${sub.href}"  class="mobile-submenu__children text-white d-flex align-items-center justify-content-between px-4">
+                                                <div class="d-flex align-items-center flex-grow-1">
+                                                    <span class="mobile-submenu__child-text fw-light flex-grow-1">${sub.title}</span>
+                                                </div>
+                                            </a>`
+                        )).join('')}`
+                        :
+                        ``
+                    }
+                                    <div class="border-bottom-1 ms-3"></div>
+                                </div>
+                            </div>`
+                )).join('')
+                }
+                        `
+                :
+                `<a href="#" class="mobile-submenu__child-link text-white d-flex align-items-center justify-content-between px-4">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <span class="mobile-submenu__child-text fw-light flex-grow-1">برای این دسته‌بندی زیرمجموعه‌ای وجود ندارد</span>
+                        </div>
+                    </a>`
+            }
+                </div>
+            </div>`
+        )
+    })
+
+    document.querySelectorAll('.mobile-submenu__link').forEach(submenuLink => {
+        submenuLink.addEventListener('click', event => {
+            event.preventDefault()
+            event.currentTarget.nextElementSibling.classList.toggle('hidden')
+        })
+    })
+
+    document.querySelectorAll('.mobile-submenu__child-link').forEach(submenu => {
+        submenu.addEventListener('click', event => {
+            event.preventDefault();
+            submenu.nextElementSibling.classList.toggle('hidden')
+            submenu.querySelector('.mobile-submenu__child-text').classList.toggle('red-color')
+            submenu.querySelector('.fa-chevron-up').classList.toggle('red-color')
+            submenu.querySelector('.fa-chevron-down').classList.toggle('hidden')
+            submenu.querySelector('.fa-chevron-up').classList.toggle('hidden')
+        })
+    })
+}
+
+mobileMenuIconBar.addEventListener('click', openMenuBurgerHandler)
+closeMenuBtn.addEventListener('click', closeMenuBurgerHandler)
 
 export {
     showUserNameInNavbar,
@@ -1054,4 +1055,5 @@ export {
     getAndShowAllMegaMenus,
     getUserBasketCountAndShowModal,
     showEmptyBasket,
+    showCategoriesInMobileVersion
 }

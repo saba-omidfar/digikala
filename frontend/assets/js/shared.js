@@ -1,8 +1,9 @@
 import { selectCityModalHandler, getUerLocation } from "./find-city.js"
-import { 
+import {
     showUserNameInNavbar,
-    getAndShowAllTopBarMenus, 
-    getAndShowAllMegaMenus
+    getAndShowAllTopBarMenus,
+    getAndShowAllMegaMenus,
+    showCategoriesInMobileVersion
 } from "./funcs/shared.js"
 
 const menuModal = document.querySelector('#show-modal-menu')
@@ -14,7 +15,7 @@ window.addEventListener('load', () => {
     getUerLocation()
     getAndShowAllTopBarMenus()
     getAndShowAllMegaMenus()
-    // getAndShowAllProducts()
+    showCategoriesInMobileVersion()
 })
 
 // Show And Hide Menu
@@ -30,28 +31,27 @@ document.querySelector('.header-nav__item-link-wrapp').addEventListener('mousele
     menu.classList.remove('active-modal-menu')
 })
 
-document.querySelectorAll('.mobile-submenu__link').forEach(submenuLink => {
-    submenuLink.addEventListener('click', event => {
-        event.preventDefault()
-        document.querySelector('.mobile-submenu__child').classList.toggle('hidden')
-    })
-})
+// document.querySelectorAll('.mobile-submenu__link').forEach(submenuLink => {
+//     submenuLink.addEventListener('click', event => {
+//         event.preventDefault()
+//         document.querySelector('.mobile-submenu__child').classList.toggle('hidden')
+//     })
+// })
 
-document.querySelectorAll('.mobile-submenu__child-link').forEach(submenu => {
-    submenu.addEventListener('click', event => {
-        event.preventDefault()
-        submenu.parentElement.lastElementChild.classList.toggle('hidden')
-        submenu.querySelector('.mobile-submenu__child-text').classList.toggle('red-color')
-        submenu.querySelector('.fa-chevron-up').classList.toggle('red-color')
-        submenu.querySelector('.fa-chevron-down').classList.toggle('hidden')
-        submenu.querySelector('.fa-chevron-up').classList.toggle('hidden')
-    })
-})
+// document.querySelectorAll('.mobile-submenu__child-link').forEach(submenu => {
+//     submenu.addEventListener('click', event => {
+//         event.preventDefault()
+//         submenu.parentElement.lastElementChild.classList.toggle('hidden')
+//         submenu.querySelector('.mobile-submenu__child-text').classList.toggle('red-color')
+//         submenu.querySelector('.fa-chevron-up').classList.toggle('red-color')
+//         submenu.querySelector('.fa-chevron-down').classList.toggle('hidden')
+//         submenu.querySelector('.fa-chevron-up').classList.toggle('hidden')
+//     })
+// })
 
-document.querySelector('.mobile-menu__icon-bar').addEventListener('click', () => {
 
-    document.querySelector('.mobile-menu__wrapp').style.transform = "translateX(0px)"
-})
+
+
 
 
 // Menus And SubMenus -------------------------------------------------------------------
@@ -95,12 +95,15 @@ function scrollHandler() {
 
 
 
+
+
+
+showSelectCityModalIcon.addEventListener('click', selectCityModalHandler)
+
 if (window.innerWidth > 999) {
     document.querySelector('.header-navigation__city').addEventListener('mouseenter', () => {
         document.querySelector('.header-navigation__city-modal').classList.toggle('hidden')
     })
 }
-
-showSelectCityModalIcon.addEventListener('click', selectCityModalHandler) //Show Select City Modal
 
 export { scrollHandler }

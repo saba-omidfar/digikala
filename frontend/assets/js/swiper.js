@@ -162,6 +162,7 @@ const swiper6 = new Swiper(".swiper6", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  spaceBetween: 8,
   slidesPerView: 7,
   breakpoints: {
     // when window width is >= 320px
