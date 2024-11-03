@@ -1,7 +1,7 @@
 import { getUserBasketCountAndShowModal, showEmptyBasket } from "./shared.js"
 import { getUserID, isLogin, showSwal } from "./utils.js"
 
-const mainURL = `https://digikala.liara.run/`
+const mainURL = "https://digikala.liara.run/"
 
 const isUserLogin = isLogin()
 const supportOnlineBtn = document.querySelector('.support-btn__online')
@@ -9,8 +9,6 @@ const supportPageTwo = document.querySelector('.support-page__two')
 const supportPageOne = document.querySelector('.support-page__one')
 
 const getAndShowAllHeaderSliders = async () => {
-    console.log("loaded");
-    
 
     const headerSliderContainer = document.querySelector('#header-slider-container')
 
