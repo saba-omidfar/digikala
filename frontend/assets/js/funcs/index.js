@@ -1,7 +1,7 @@
 import { getUserBasketCountAndShowModal, showEmptyBasket } from "./shared.js"
 import { getUserID, isLogin, showSwal } from "./utils.js"
 
-const mainURL = `https://digikala-backend.vercel.app`
+const mainURL = `https://digikala.liara.run/`
 
 const isUserLogin = isLogin()
 const supportOnlineBtn = document.querySelector('.support-btn__online')
