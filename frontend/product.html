@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه اینترنتی دیجی‌کالا</title>
+
+    <!-- LINKS -->
+    <!-- <link href="https://fonts.cdnfonts.com/css/iranyekan" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets/vendor/fontAwesome/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/noUiSlider/noUi.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+    <main class="main d-flex flex-column">
+
+        <!-- DigiKala Post Modal -->
+        <div class="digikala-post__modal-bg hidden" id="modal">
+            <div class="modal-content__size">
+                <div class="modal__content">
+                    <div class="w-100 z-1 bg-white position-fixed top-0 right-0 px-3">
+                        <div class="d-flex border-bottom-f1 align-items-center">
+                            <div class="break-words py-2 flex-grow-1">
+                                <div class="d-flex align-items-center flex-grow-1">
+                                    <p class="flex-grow-1 text-title color-900">
+                                        <span class="position-relative">جزئیات ارسال</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 text-h5"></div>
+                            <div class="d-flex pointer" id="close-digikala-post-modal">
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 d-flex flex-column overflow-y-auto">
+                        <div class="flex-grow-1 d-flex flex-column styles_children__hHq5Q py-2 px-3">
+                            <div class="mb-3">
+                                <p class="text-title">ارسال دیجی‌کالا</p>
+                                <p class="color-700 text-body-2">این کالا در انبار دیجی‌کالا موجود و آماده پردازش است و
+                                    توسط پیک دیجی‌کالا در بازه انتخابی ارسال خواهد شد.</p>
+                            </div>
+                            <div class="">
+                                <p class="text-title">ارسال امروز (فعلا در شهر تهران و کرج)</p>
+                                <p class="color-700 text-body-2">اگر سفارش را قبل از ساعت ۶ عصر ثبت کنید، همان روز ارسال
+                                    می‌شود. در صورت ثبت سفارش بعد از ساعت ۶ عصر، فردا ارسال خواهد شد.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Modal -->
+        <div class="question__modal-bg hidden" id="question__modal">
+            <div class="question__modal">
+                <div class="d-flex flex-column h-100 overflow-y-hidden"
+                    style="padding-top: 70px; padding-bottom: 103px;">
+                    <div class="question__modal-title w-100 z-1 px-4">
+                        <div class="d-flex align-items-center justify-content-between"
+                            style="border-bottom: 1px solid #e0e0e2">
+                            <div class="break-words py-3">
+                                <div class="d-flex align-items-center">
+                                    <p class="text-subtitle-strong color-1000">
+                                        <span class="position-relative">پرسش خود را درباره این کالا ثبت کنید</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="grow text-h5"></div>
+                            <div class="d-flex pointer" id="close-question__modal-btn">
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow d-flex flex-column overflow-y-auto">
+                        <div class="d-flex flex-grow flex-column py-3 px-4">
+                            <div class="flex-grow">
+                                <div>
+                                    <label class="text-body-2 w-100 d-inline-block">
+                                        <div class="question__modal-input-container px-2">
+                                            <div class="flex-grow text-body-3">
+                                                <textarea maxlength="100"
+                                                    class="py-2 px-3 text-subtitle w-100 queation__modal-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="question__modal-text text-neutral-400 text-body-2 me-3">
+                                        <span id="question-max-length-modal">100</span>/<span id="question-length-modal">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question__modal-footer w-100 px-4 py-3 shadow-1-top">
+                        <div class="w-100">
+                            <button
+                                class="queation__modal-btn text-body-1 position-relative d-flex justify-content-center align-items-center w-100"
+                                id="question-submit__btn-modal">
+                                <div
+                                    class="d-flex align-items-center justify-content-center position-relative flex-grow">
+                                    ثبت پرسش</div>
+                            </button>
+                            <p class="question__modal-footer-link text-center mt-2">ثبت پرسش به معنی موافقت با
+                                <a class="mx-1 color-secondary-500" href="#">
+                                    قوانین انتشار دیجی‌کالا
+                                </a>
+                                است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Modal -->
+        <div class="comment__modal-bg hidden" id="comment__modal">
+            <div class="comment__modal">
+                <div class="d-flex flex-column h-100 overflow-y-auto" style="padding-top: 90px;">
+                    <div class="comment__modal-title w-100 z-1 px-4">
+                        <div class="d-flex align-items-center justify-content-between"
+                            style="border-bottom: 1px solid #e0e0e2">
+                            <div class="break-words py-3 flex-grow">
+                                <div class="d-flex align-items-center flex-grow">
+                                    <p class="text-body2-strong color-1000">
+                                        <span class="position-relative">دیدگاه شما</span>
+                                    </p>
+                                </div>
+                                <div class="text-caption color-neutral-500">در مورد 
+                                    <span id="comment-modal__product-name"></span>
+                                </div>
+                            </div>
+                            <div class="flex-grow text-h5"></div>
+                            <div class="d-flex pointer" id="close-comment__modal-btn">
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow d-flex flex-column overflow-y-auto">
+                        <div class="flex-grow d-flex flex-column pt-3">
+                            <div>
+                                <div class="d-flex align-items-start mb-1 mb-lg-0 px-2">
+                                    <div class="grow add-comment-form__wrapper">
+                                        <form>
+                                            <div class="d-flex justify-content-center flex-wrap px-lg-2 pb-4 position-relative pt-2"
+                                                style="border-bottom: 1px solid #f0f0f1">
+                                                <div class="mb-3 d-flex align-items-center">
+                                                    <span class="text-hint-text-error ms-1">*</span>
+                                                    <p class="color-700 text-body2-strong">امتیاز دهید!:‌ </p>
+                                                    <p class="color-700 me-1 text-body2-strong" id="comment__score-text"></p>
+                                                </div>
+                                                <div class="pe-1 ps-1 w-100">
+                                                    <div class="noUi-target" id="no-ui-target">
+                                                        <div class="noUi-pips">
+                                                            <div class="noUi-marker" style="right: 0%;"></div>
+                                                            <div class="noUi-marker" style="right: 20%;"></div>
+                                                            <div class="noUi-marker" style="right: 40%;"></div>
+                                                            <div class="noUi-marker" style="right: 60%;"></div>
+                                                            <div class="noUi-marker" style="right: 80%;"></div>
+                                                            <div class="noUi-marker" style="right: 100%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-body2-strong color-1000 my-4">دیدگاه خود را شرح دهید</p>
+                                            <label class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center pe-1">
+                                                    <p class="mb-2 text-body-1">عنوان نظر</p>
+                                                </div>
+                                                <div class="comment-input-container px-2 d-flex items-center">
+                                                    <div class="w-100 flex-grow-1 text-body-3">
+                                                        <input class="px-2 comment__input" id="comment-title" type="text" name="title"
+                                                            value="">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="d-flex justify-content-center flex-wrap pt-lg-3 pb-lg-4 py-3 position-relative mt-lg-2">
+                                                <label class="w-100">
+                                                    <div class="d-flex justify-content-between align-items-center pe-1">
+                                                        <p class="mb-2 text-body-1">نکات مثبت</p>
+                                                    </div>
+                                                    <div class="comment-input-container px-2 d-flex items-center">
+                                                        <div class="w-100 flex-grow-1 text-body-3">
+                                                            <input class="px-2 comment__input" id="positive-input" type="text" name="title"
+                                                                value="">
+                                                        </div>
+                                                        <div class="d-flex pointer comment__input-icon" id="add-positive-point">
+                                                            <i class="fa fa-plus"
+                                                                style="width: 16px; height: 16px; color: #a1a3a8"></i>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-hint-text-error text-caption"  id="pos-comment-hint-text"></p>
+                                                </label>
+                                                <div class="w-100 d-flex flex-column" id="positive-point-container"></div>
+                                            </div>
+                                            <div
+                                                class="d-flex justify-content-center flex-wrap pt-lg-3 pb-lg-4 py-3 position-relative mt-lg-2">
+                                                <label class="w-100">
+                                                    <div class="d-flex justify-content-between align-items-center pe-1">
+                                                        <p class="mb-2 text-body-1">نکات منفی</p>
+                                                    </div>
+                                                    <div class="comment-input-container px-2 d-flex align-items-center">
+                                                        <div class="w-100 flex-grow-1 text-body-3">
+                                                            <input class="px-2 comment__input" id="negative-input" type="text" name="title"
+                                                                value="">
+                                                        </div>
+                                                        <div class="d-flex pointer comment__input-icon" id="add-negative-point">
+                                                            <i class="fa fa-plus"
+                                                                style="width: 16px; height: 16px; color: #a1a3a8"></i>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-hint-text-error text-caption" id="neg-comment-hint-text"></p>
+                                                </label>
+                                                <div class="w-100 d-flex flex-column" id="negative-point-container"></div>
+                                            </div>
+                                            <label class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <p class="mb-2 text-body-1">متن نظر
+                                                        <span class="text-hint-text-error">*</span>
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 h-100 comment-textarea-container px-2 d-flex align-items-center">
+                                                    <div class="w-100 flex-grow-1 w-100 text-body-3">
+                                                        <textarea class="comment__textarea text-body-2 w-100"
+                                                            name="comment" placeholder="برای ما بنویسید..."></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="d-flex align-items-center mt-3 mb-3">
+                                                <label class="d-flex align-items-center pointer checkbox__container py-1">
+                                                    <input class="text-body-1 color-700 position-absolute" id="comment-checkbox__input" type="checkbox" style="width: 15px; height: 15px;">
+                                                    
+                                                </label>
+                                                <p class="text-caption color-700 me-4">ارسال دیدگاه به صورت
+                                                    ناشناس</p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="border-all-f0 border-radius-8 px-3 py-2 d-lg-block me-3">
+                                        <div class="break-words py-3">
+                                            <div class="d-flex align-items-center flex-grow">
+                                                <p class="flex-grow text-body2-strong color-1000">
+                                                    <span class="position-relative">دیگران را با نوشتن نظرات خود، برای
+                                                        انتخاب این محصول راهنمایی کنید.</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="text-body-2">
+                                            <ul>
+                                                <p>
+                                                    <span class="text-caption" style="color:#2980b9">
+                                                        <strong>لطفا پیش از ارسال نظر، خلاصه قوانین زیر را مطالعه کنید:</strong>
+                                                    </span>
+                                                </p>
+                                                <li class="text-caption">لازم است محتوای ارسالی منطبق برعرف و شئونات جامعه و با بیانی رسمی و عاری از لحن تند، تمسخرو توهین باشد.</li>
+                                                <li class="text-caption">از ارسال لینک‌&nbsp;سایت‌های دیگر و ارایه‌ی اطلاعات شخصی نظیر شماره
+                                                    تماس، ایمیل و آی‌دی شبکه‌های اجتماعی پرهیز کنید.</li>
+                                                <li class="text-caption">
+                                                    <strong>
+                                                        در نظر داشته باشید هدف نهایی از ارائه‌ی نظر درباره‌ی کالا ارائه‌ی اطلاعات مشخص و مفید&nbsp;برای راهنمایی سایر کاربران در فرآیند انتخاب و خرید یک محصول&nbsp;است.
+                                                    </strong>
+                                                </li>
+                                                <li class="text-caption">
+                                                    با توجه به ساختار بخش نظرات، از پرسیدن سوال یا درخواست راهنمایی در
+                                                    این بخش خودداری کرده و سوالات خود را در بخش «پرسش و پاسخ» مطرح کنید.
+                                                </li>
+                                            </ul>
+                                            <p class="text-caption">
+                                                <strong>
+                                                    <span style="color:#2980b9">پیشنهاد می‌شود قوانین کامل ثبت نظر را در
+                                                    </span>
+                                                    <u>
+                                                        <a href="#">
+                                                            <span style="color:#2980b9">این صفحه</span>
+                                                        </a>
+                                                    </u>
+                                                    <span style="color:#2980b9"> مطالعه کنید.</span>
+                                                </strong>
+                                            </p>
+                                            <p class="text-caption">هرگونه نقد و نظر در خصوص سایت دیجی‌کالا،&nbsp;مشکلات&nbsp;دریافت خدمات و
+                                                درخواست کالا&nbsp;و نیز گزارش تخلف فروش (نظیر گزارش کالای غیراصل یا
+                                                مغایر)&nbsp;را با ایمیل&nbsp;&nbsp;<a
+                                                    href="mailto:info@digikala.com">info@digikala.com&nbsp;</a>&nbsp;یا
+                                                با شماره‌ی&nbsp;&nbsp;
+                                                <a href="tel: +982161930000">۶۱۹۳۰۰۰۰ - ۰۲۱&nbsp;</a>
+                                                &nbsp;در میان بگذارید و از نوشتن آن‌ها در بخش نظرات خودداری کنید.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-modal__footer d-flex flex-column flex-lg-row justify-content-start align-items-center py-lg-3 py-4 px-4">
+                                    <div class="flex-grow-5 w-50">
+                                        <button
+                                            class="comment__modal-btn w-100 position-relative d-flex align-items-center" id="add-comment__submit-btn">
+                                            <div class="w-100 d-flex align-items-center justify-content-center text-body-1 position-relative flex-grow">
+                                                ثبت دیدگاه</div>
+                                        </button>
+                                    </div>
+                                    <p class="mt-2 mt-lg-0" style="font-size: .65rem;">ثبت دیدگاه به معنی موافقت با
+                                        <a class="mx-1 color-secondary-500" href="#">قوانین انتشار دیجی‌کالا</a>
+                                        است.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 buy-box__footer-container d-none">
+            <div class="w-100 shadow-lg-none shadow-fab-button">
+                <div class="py-2 px-3" id="buy-product__container-responsive">
+                    <!-- Data Loaded From JS -->
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column bg-100 align-items-center">
+            <!-- Start Select City Modal -->
+            <div class="select-city__modal-bg hidden" id="modal">
+                <div class="select-city__modal">
+                    <div class="select-city__modal-content position-fixed bg-white w-100 h-100 top-0 right-0">
+                        <div class="d-flex align-items-center px-3 position-fixed top-0 w-100">
+                            <div class="d-flex align-items-center border-bottom-1 w-100">
+                                <div class="py-3 flex-grow-1">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <p class="flex-grow-1">انتخاب شهر</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex select-city__modal-icon">
+                                    <i class="fas fa-close"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
+                            <div class="show-city-modal flex-column flex-grow-1 px-4 py-3">
+                                <span class="py-2 d-block">
+                                    <div
+                                        class="select-city__modal-title-color d-flex justify-content-between align-items-center">
+                                        <div
+                                            class="d-flex justify-content-center align-items-center ms-2 select-city__modal-icon">
+                                            <i
+                                                class="select-city__modal-title-color fa-solid fa-location-crosshairs"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="flex-grow-1">
+                                                مکان‌یابی خودکار
+                                            </span>
+                                        </div>
+                                    </div>
+                                </span>
+                                <div class="select-city__modal-provinces">
+                                    <!-- Data Loaded From JS -->
+                                </div>
+                            </div>
+                            <div class="show-city-modal hidden flex-column flex-grow-1 px-4 py-3">
+                                <span class="py-2 d-block back-province-modal">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div
+                                            class="d-flex justify-content-center align-items-center ms-2 select-city__modal-icon">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="flex-grow-1">
+                                                بازگشت به لیست استان‌ها
+                                            </span>
+                                        </div>
+                                    </div>
+                                </span>
+                                <div class="select-city__modal-cities">
+                                    <!-- Data Loaded From Js -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Images products Modal -->
+            <div class="images-product__modal-bg hidden" id="other-images-modal">
+                <div class="images-product__modal">
+                    <div class="images-product__modal-layout d-flex flex-column h-100 overflow-y-hidden">
+                        <div class="w-100 bg-white position-fixed top-0 px-3">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex flex-grow-1">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex position-relative border-bottom-1-e6">
+                                            <div
+                                                class="images-product__modal-title tab-active position-relative px-3 py-2 d-flex flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0">
+                                                تصاویر رسمی
+                                                <div
+                                                    class="position-absolute bottom-0 opacity-100 info-section__tab__border-bottom">
+                                                </div>
+                                            </div>
+                                            <!-- <div
+                                                class="images-product__modal-title position-relative px-3 py-2 d-flex flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0">
+                                                تصاویر خریداران
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center images-product__modal-close-icon">
+                                        <i class="fa fa-close"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1 overflow-y-auto">
+                            <div class="d-flex flex-column flex-grow-1 images-product__modal-children py-3">
+                                <div>
+                                    <div class="d-flex flex-column flex-grow-1">
+                                        <div class="d-lg-flex w-100 align-items-start flex-grow-1">
+                                            <div
+                                                class="align-self-stretch d-flex flex-column flex-shrink-0 pe-3 images-product__slider-wrapper">
+                                                <div class="position-relative">
+                                                    <div class="swiper9 overflow-hidden">
+                                                        <div class="swiper-wrapper"
+                                                            id="images-product__slider-container">
+                                                            <!-- Data Loaded From JS -->
+                                                        </div>
+                                                        <div class="swiper-button-prev swiper-button-prev9">
+                                                            <i class="fa-solid fa-chevron-right position-absolute"></i>
+                                                        </div>
+                                                        <div class="swiper-button-next swiper-button-next9">
+                                                            <i class="fa-solid fa-chevron-left position-absolute"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column mx-lg-4 flex-grow-1">
+                                                <div class="product-info__left-h4 py-3">
+                                                    <div class="d-flex flex-grow-1 align-items-center">
+                                                        <p class="flex-grow-1"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-wrap" id="image-product__modal-wrapper"">
+                                                    <!-- Data Loaded From JS -->
+                                                </div>
+                                                <!-- <div class=" d-flex justify-content-between align-items-center
+                                                    py-4">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="overflow-hidden ms-2">
+                                                            <img class="d-inline-block object-fit-contain"
+                                                                src="/assets/images/product/image-user/1.jpg" alt=""
+                                                                style="width: 30px; height: 30px; border-radius: 8px;">
+                                                        </div>
+                                                        <div class="overflow-hidden ms-2">
+                                                            <img class="d-inline-block object-fit-contain"
+                                                                src="/assets/images/product/image-user/2.jpg" alt=""
+                                                                style="width: 30px; height: 30px; border-radius: 8px;">
+                                                        </div>
+                                                        <div class="overflow-hidden ms-2">
+                                                            <img class="d-inline-block object-fit-contain"
+                                                                src="/assets/images/product/image-user/3.jpg" alt=""
+                                                                style="width: 30px; height: 30px; border-radius: 8px;">
+                                                        </div>
+                                                        <div class="overflow-hidden ms-2">
+                                                            <img class="d-inline-block object-fit-contain"
+                                                                src="/assets/images/product/image-user/4.jpg" alt=""
+                                                                style="width: 30px; height: 30px; border-radius: 8px;">
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="d-inline-flex align-items-center d-flex align-items-center flex-shrink-0">
+                                                        <span class="images-product__modal-footer-text">۷ تصویر
+                                                            دیگر</span>
+                                                        <i
+                                                            class="images-product__modal-footer-icon fa fa-chevron-left"></i>
+                                                    </span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-box-shadow">
+                <header class="header d-flex flex-column">
+                    <div>
+                        <a href="#" class="top-bar__gif">
+                            <img class="object-fit-cover w-100" src="assets/images/header/header-gif.gif" alt="">
+                        </a>
+                    </div>
+
+                    <div class="header-md">
+                        <div class="w-100 d-flex mx-auto justify-content-between px-lg-3 flex-grow-1 px-0">
+                            <div class="w-100 d-flex align-items-center py-lg-3 py-0 flex-column flex-lg-row">
+                                <div class="mobile-menu__icon">
+                                    <div class="mobile-menu__icon-bar ms-1">
+                                        <i class="fa-solid fa-bars"></i>
+                                    </div>
+                                    <div class="mobile-menu__logo flex-lg-grow-0 flex-grow-1 ms-lg-3 ms-0">
+                                        <a href="index.html" class="top-bar__link">
+                                            <img class="top-bar__logo" src="assets/images/logo/logo-svg.svg" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="top-bar__searchBox-container d-flex flex-grow-1 align-items-center justify-content-between pt-2 pt-lg-0 pb-2 pb-lg-0">
+                                    <div class="top-bar__searchBox-wrapp">
+                                        <input class="search-input" type="text" placeholder="جستجو"
+                                            id="products-search__input">
+                                        <div class="top-bar__searchBox d-flex align-items-center flex-grow-1">
+                                            <div class="top-bar__searchBox-icon">
+                                                <i
+                                                    class="fa-solid fa-magnifying-glass top-bar__searchBox-search-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="search-input__box hidden">
+                                            <div class="flex-grow">
+                                                <div class="d-flex flex-column h-100 overflow-y-hidden">
+                                                    <div class="bg-white border-radius-8 flex-grow d-flex flex-column">
+                                                        <div
+                                                            class="flex-grow d-flex flex-column overflow-y-hidden overflow-x-hidden">
+                                                            <div class="pt-3 pb-4 top-0 right-0">
+                                                                <div class="d-flex w-100">
+                                                                    <div class="gap-2 w-100">
+                                                                        <div class="swiper-container">
+                                                                            <div class="swiper13">
+                                                                                <div class="swiper-wrapper"
+                                                                                    id="search-product__card-container">
+                                                                                    <!-- Search Slides Loaded From JS -->
+                                                                                </div>
+
+                                                                                <!-- If we need navigation buttons -->
+                                                                                <div
+                                                                                    class="swiper-button-prev swiper-button-prev13">
+                                                                                    <i
+                                                                                        class="fa-solid fa-chevron-right position-absolute"></i>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="swiper-button-next swiper-button-next13">
+                                                                                    <i
+                                                                                        class="fa-solid fa-chevron-left position-absolute"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <!-- Data Loaded From JS -->
+                                        <div class="position-relative mini-profile__button flex-shrink-0 ms-2"
+                                            id="navbar-phone"></div>
+                                        <span class="top-bar__dash"></span>
+                                        <div class="d-flex flex-column position-relative navbar-basket">
+                                            <a class="p-lg-2 cart-shopping__link" href="#">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-cart-shopping cart-shopping"></i>
+                                                </div>
+                                                <div
+                                                    class="cart-shopping__badge-count d-flex align-items-center justify-content-center">
+                                                    <span class="cart-shopping__badge-text text-caption"></span>
+                                                </div>
+                                            </a>
+                                            <div class="cart-shopping__popup" id="cart-shopping__modal">
+                                                <!-- Data Loaded From JS -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <nav
+                            class="header-navigation__wrapp d-flex flex-row flex-lg-column justify-content-between flex-grow-1">
+                            <div
+                                class="d-flex justify-content-between align-items-center flex-grow-1 px-0 px-lg-3 position-relative">
+                                <div class="header-navigation__menu d-flex align-self-stretch">
+                                    <div class="d-flex navigation-menu__item h-100 header-nav__item-link-wrapp"
+                                        id="show-modal-menu">
+                                        <span class="fw-bold color-700 pb-2 h-100 d-flex align-items-center ms-3">
+                                            <div class="ms-1">
+                                                <i class="fa-solid fa-bars"></i>
+                                            </div>
+                                            دسته‌بندی کالاها
+                                        </span>
+
+                                        <!-- menu and submenu -->
+                                        <div class="navigation-menu__category position-absolute bg-white overflow-auto">
+                                            <div class="w-100 h-100 d-flex">
+                                                <div class="navigation-menu__category-item flex-column overflow-auto">
+                                                    <!-- MegaMenus Loaded From JS -->
+                                                </div>
+                                                <div
+                                                    class="navigation-menu__category-submenu-container flex-grow-1 p-3 overflow-auto">
+                                                    <div class="navigation-menu__category-submenu d-flex w-100 rtl">
+                                                        <div class="d-flex flex-column flex-grow-1 h-100"
+                                                            id="submenu-container">
+                                                            <!-- SubMenus Loaded From JS -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex header-navigation position-relative">
+                                        <div class="d-flex align-items-center" id="header-navigation">
+                                            <!-- TopMenus Loaded From JS -->
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="header-nav__item d-flex align-items-center pb-2 px-2 position-relative h-100 header-nav__item-link-wrapp">
+                                            <a href="#" class="d-flex align-items-center header-nav__item-link">
+                                                سوالی دارید؟
+                                            </a>
+                                        </div>
+                                        <div
+                                            class="header-nav__item d-flex align-items-center pb-2 px-2 h-100 position-relative header-nav__item-link-wrapp">
+                                            <a href="#" class="d-flex align-items-center header-nav__item-link">
+                                                در دیجی‌کالا بفروشید!
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-item__hover-border"></div>
+                                </div>
+                                <div
+                                    class="header-navigation__city position-relative d-flex align-items-center justify-content-between p-2 pt-lg-0">
+                                    <div class="d-flex flex-grow-1 align-items-center">
+                                        <div class="ms-2">
+                                            <i class="fa-solid fa-location-dot header-navigation__city-icon"></i>
+                                        </div>
+                                        <div class="city-content__wrapper">
+                                            لطفا شهر خود را انتخاب کنید
+                                        </div>
+                                    </div>
+                                    <div class="header-navigation__city-modal hidden position-absolute">
+                                        لطفا شهر خود را انتخاب کنید
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+
+
+                        
+                        <!-- Mobile Burgur Menu -->
+                        <div class="mobile-menu__wrapp position-fixed top-0 bg-white h-100">
+                            <a href="#" class="py-3 d-flex justify-content-between align-items-center mb-1 mx-3 border-bottom-1">
+                                <div class="mobile-menu__logo">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/logo/digi-farsi.svg" alt="">
+                                </div>
+                                <div class="d-flex close-menu__btn">
+                                    <i class="fa fa-close close-menu__btn-style"></i>
+                                </div>
+                            </a>
+
+                            <p class="mobile-submenu__title pe-3 my-3">دسته‌بندی کالاها</p>
+
+                            <!-- موبایل -->
+                            <div id="mobile-menu-category__wrapper">
+                                <!-- Data Loaded From JS -->
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Start Product Section -->
+            <div class="flex-grow-1 bg-white d-flex flex-column w-100 align-items-center flex-shrink-0 pt-177 px-lg-3 container-xxl-w">
+                <div class="flex-grow-1 bg-white d-flex flex-column align-items-center product-content__wrapper">
+                    <div class="w-100">
+
+                        <!-- Start Breadcrumb -->
+                        <div class="align-items-center d-flex flex-wrap w-100">
+                            <nav class="p-3 flex-grow-1 px-md-0">
+                                <div class="breadcrumb-content overflow-hidden">
+                                    <ul class="breadcrumb__list d-flex flex-wrap align-items-center flex-grow-1 w-100 h-100"
+                                        id="breadcrumb__list-container">
+                                        <!-- Data Loaded From JS -->
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="d-none d-lg-flex align-items-center py-2">
+                                <a href="/" class="breadcrumb__link ms-3 d-flex align-items-center">
+                                    <span>ثبت آگهی در پیندو</span>
+                                    <div class="d-flex me-2">
+                                        <i class="fa-solid fa-volume-high"></i>
+                                    </div>
+                                </a>
+                                <a href="/" class="breadcrumb__link d-flex align-items-center">
+                                    <span>فروش در دیجی‌کالا</span>
+                                    <div class="d-flex me-2">
+                                        <i class="fa-solid fa-shop"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Start Conetent -->
+                        <div class="d-flex flex-column flex-lg-row overflow-hidden align-items-start">
+                            <div class="ms-lg-3 flex-shrink-0 product-info">
+                                <div class="align-items-center py-2 mx-3 mx-lg-0 hidden">
+                                    <div class="d-flex align-items-center justify-content-center hidden ms-2 incredible-offers"
+                                        id="product-incredible-offers-logo">
+                                        <img src="assets/images/product/IncredibleOffer.svg"
+                                            class="w-100 object-fit-contain d-inline-block h-100" alt="">
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mt-1 me-5 me-auto hidden me-lg-3 me-auto"
+                                        id="product-incredible-offers-timing">
+                                        <span class="product-offer__timing">۴۰ : ۰۵ : ۱۶ : ۱</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="d-flex flex-column align-items-center max-w-92-lg max-w-145-xl d-lg-block mb-2">
+                                    <div class="d-flex flex-lg-row flex-column w-100">
+                                        <div
+                                            class="d-flex flex-lg-column align-self-end align-self-lg-start my-3 my-lg-0 px-3 px-lg-0">
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-regular fa-heart" id="product-heart__icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-solid fa-share-nodes" id="product-heart__icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-regular fa-bell" id="product-bell__icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-solid fa-chart-line" id="product-line__icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-solid fa-code-compare" id="product-compare__icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-4 me-lg-2 mb-lg-3">
+                                                <div class="d-flex incredible-offers-icon">
+                                                    <i class="fa-solid fa-list-ul" id="product-list__icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="position-relative">
+                                            <div class="swiper8 d-lg-none d-block">
+                                                <div class="swiper-wrapper"></div>
+                                                <div class="swiper-pagination swiper-pagination8"></div>
+                                            </div>
+                                        </div>
+                                        <div class="position-relative d-flex align-items-center d-lg-block d-none">
+                                            <div class="zoom-img__container">
+                                                <img id="originalImage" src="">
+                                                <div class="zoom__window-container mt-2">
+                                                    <div id="zoomedImage"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-lg-flex align-items-center mt-2 mb-3 d-none"
+                                        id="product-images-container">
+                                        <!-- Data Loaded From JS -->
+                                    </div>
+                                    <div class="d-none d-lg-flex align-items-center">
+                                        <div class="ms-3">
+                                            <div class="d-flex">
+                                                <div class="d-flex mt-1">
+                                                    <i class="fa-solid fa-circle-exclamation feedback-icon"></i>
+                                                </div>
+                                                <span class="me-2 feedback-text">گزارش نادرستی مشخصات</span>
+                                            </div>
+                                        </div>
+                                        <span class="feedback-text2"> DKP-149717</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <!-- title -->
+                                <div class="d-flex align-items-center w-100 px-3 px-lg-0">
+                                    <div>
+                                        <div class="d-flex align-items-center">
+                                            <nav class="d-flex align-items-center">
+                                                <a class="" href="#">
+                                                    <span class="product-info__left-section-link"
+                                                        id="product-brand"></span>
+                                                </a>
+                                                <a class="" href="#">
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="mx-2 product-info__left-span"> / </p>
+                                                        <p class="product-info__left-section-link" id="product-title">
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </nav>
+                                        </div>
+                                        <h1 class="mb-2 product-info__left-h4" id="product-name"></h1>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-lg-row justify-content-lg-between flex-column w-100">
+                                    <div class="d-flex flex-column">
+                                        <div class="pb-3 pb-lg-0 variantInfo-container bb px-3 px-lg-0">
+                                            <div class="align-items-center d-none d-lg-flex">
+                                                <span class="ms-2 variantInfo-text" id="product-eng-title"></span>
+                                                <div class="flex-grow-1 variantInfo-titleLine"></div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="mt-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="d-flex variantInfo-star-icon">
+                                                            <img class="object-fit-contain d-inline-block w-100"
+                                                                src="assets/covers/star-yellow.png" alt="امتیاز">
+                                                        </div>
+                                                        <p class="variantInfo-text-body me-1" id="product-rating"></p>
+                                                        <p class="variantInfo-text-caption me-1">(۳۴۷)</p>
+                                                        <div class="d-flex mx-2">
+                                                            <i
+                                                                class="variantInfo-dot-icon fa-solid fa-circle fa-2xs"></i>
+                                                        </div>
+                                                        <span
+                                                            class="pointer variantInfo-comments d-inline-flex align-items-center mx-1">
+                                                            <span id="product-comment"></span>
+                                                        </span>
+                                                        <div class="d-flex mx-2">
+                                                            <i
+                                                                class="variantInfo-dot-icon fa-solid fa-circle fa-2xs"></i>
+                                                        </div>
+                                                        <span
+                                                            class="pointer variantInfo-questions d-inline-flex align-items-center mx-1">
+                                                            <span id="product-question"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center mt-2">
+                                                <div class="d-flex ms-2 variantInfo-like-icon">
+                                                    <i class="fa-regular fa-thumbs-up"></i>
+                                                </div>
+                                                <p class="ms-2 feedback-text" id="product-client-satisfaction"></p>
+                                                <div class="d-flex">
+                                                    <i
+                                                        class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                                </div>
+                                            </div>
+                                            <!-- Colors -->
+                                            <div class="pb-2 mt-3 mt-lg-0 border-bot colors-box">
+                                                <div class="d-flex align-items-center flex-grow-1 py-3">
+                                                    <p class="flex-grow-1 text-h5 color-900">
+                                                        <span id="select-color">رنگ: مشکی</span>
+                                                    </p>
+                                                    <p class="mr-auto d-none-lg color-500 text-caption"
+                                                        id="colors-length">۱ رنگ</p>
+                                                </div>
+                                                <!-- Data Loaded From JS -->
+                                                <div class="d-flex flex-lg-wrap overflow-x-auto"
+                                                    id="product-colors-container">
+                                                    <!-- Data Loaded From JS -->
+                                                </div>
+                                            </div>
+                                            <!-- specefic attributes -->
+                                            <div class="specific-attribute-container">
+                                                <ul class="mx-2 mx-lg-0 pb-lg-3 border-b pb-1" id="specific-attribute">
+                                                    <div class="break-words py-2">
+                                                        <div class="d-flex align-items-center flex-grow-1">
+                                                            <p class="flex-grow-1 text-title color-900">
+                                                                <span class="position-relative">ویژگی‌ها</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Data Loaded From JS -->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- Mini Buy Box Mobile Size -->
+                                        <div class="d-block d-lg-none">
+                                            <div class="d-flex flex-column me-lg-2 mb-lg-2">
+                                                <div class="bg-white bt-8 buy-box__container-mobile-size">
+                                                    <div
+                                                        class="p-3 w-100 d-flex align-items-center justify-content-between">
+                                                        <h3 class="flex-grow-1 buy-box__title">فروشنده</h3>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#" class="buy-box__customer-satisfaction">
+                                                            <div class="w-100 px-3 d-flex">
+                                                                <div class="py-2 d-flex flex-grow-1 d-flex">
+                                                                    <div class="ms-3 py-2">
+                                                                        <div class="d-flex">
+                                                                            <img style="width: 20px; height: 20px;"
+                                                                                src="assets/images/footerlogo2.png"
+                                                                                alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex flex-column w-100">
+                                                                        <div
+                                                                            class="d-flex align-items-center mb-2 mb-lg-1">
+                                                                            <p class="ms-2 buy-box__logo-title"
+                                                                                id="seller-name">
+                                                                                دیجی‌کالا
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="w-100 d-flex align-items-center">
+                                                                            <div
+                                                                                class="ps-2 d-flex align-items-center position-relative">
+                                                                                <p class="ms-1 buy-box__rating-count">
+                                                                                    ۸۴.۸%
+                                                                                </p>
+                                                                                <p
+                                                                                    class="buy-box__rating-text fw-light">
+                                                                                    رضایت
+                                                                                    از کالا</p>
+                                                                            </div>
+                                                                            <div class="pe-2 d-flex align-items-center">
+                                                                                <p
+                                                                                    class="ms-1 buy-box__rating-text  fw-light">
+                                                                                    عملکرد</p>
+                                                                                <p class="buy-box__rating-count">عالی
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="w-100 px-3 d-flex align-items-center">
+                                                        <div
+                                                            class="py-2 d-flex flex-grow-1 d-flex align-items-center border-top-1-e6">
+                                                            <div class="ms-3">
+                                                                <div class="d-flex">
+                                                                    <i
+                                                                        class="fa-solid fa-shield-halved buy-box__guarantee-icon"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex w-100">
+                                                                <p class="buy-box__guarantee-text">گارانتی اصالت و سلامت
+                                                                    فیزیکی
+                                                                    کالا</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-100 px-3">
+                                                        <div class="py-2 d-flex flex-grow-1 border-top-1-e6">
+                                                            <div class="d-flex w-100">
+                                                                <div class="d-flex flex-column w-100 position-relative">
+                                                                    <span class="d-flex align-items-center mb-1">
+                                                                        <div class="d-flex ms-2">
+                                                                            <i
+                                                                                class="fa-regular fa-floppy-disk buy-box__disk-icon"></i>
+                                                                        </div>
+                                                                        <span class="buy-box__title-strong">موجود در
+                                                                            انبار
+                                                                            دیجی‌کالا</span>
+                                                                    </span>
+                                                                    <div class="d-flex flex-column">
+                                                                        <div class="d-flex ms-3 align-items-center">
+                                                                            <div class="d-flex position-relative d-flex align-items-center justify-content-center ms-2"
+                                                                                style="width: 22px; height: 22px;">
+                                                                                <div class="d-flex">
+                                                                                    <i class="info-section__wrapp-icon fa-solid fa-circle fa-2xs"
+                                                                                        style="color: #19bfd3;"></i>
+                                                                                </div>
+                                                                                <span
+                                                                                    class="bullet-line position-absolute top-0 d-block"></span>
+                                                                            </div>
+                                                                            <div class="d-flex mx-1">
+                                                                                <i
+                                                                                    class="fa-solid fa-truck delivery-express-icon"></i>
+                                                                            </div>
+                                                                            <p class="me-1 delivery-express-text">ارسال
+                                                                                دیجی‌کالا</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="py-2 d-flex flex-column">
+                                                                    <div class="d-flex me-auto">
+                                                                        <i
+                                                                            class="fa fa-chevron-left buy-box__left-chevron-icon"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-100 px-3">
+                                                        <div class="d-flex align-items-center border-top-1-e6">
+                                                            <div
+                                                                class="py-2 d-flex flex-grow-1 d-flex align-items-center">
+                                                                <div class="d-flex ms-3">
+                                                                    <div class="club-point__icon-wrapp">
+                                                                        <img class="w-100 d-inline-block object-fit-contain"
+                                                                            src="assets/images/club-point.svg" alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex w-100">
+                                                                    <p class="digiclub-rating__text">۱۲۲ امتیاز
+                                                                        دیجی‌کلاب
+                                                                    </p>
+                                                                    <div class="me-2 mt-1">
+                                                                        <div class="d-flex">
+                                                                            <i
+                                                                                class="fa fa-circle-exclamation variantInfo-error-icon"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-column border-top-1-e6">
+                                                    <div
+                                                        class="w-100 mt-3 d-flex px-3 px-lg-0 pb-2 pb-lg-0 product-info__better-price">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-end me-auto">
+                                                            <p class="better-price-text">قیمت بهتری سراغ دارید؟</p>
+                                                            <div class="d-flex me-2">
+                                                                <i class="better-price-tag-icon fa-solid fa-tag"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#" class="w-100">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center py-2 px-3 bt-8">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="d-flex ms-2">
+                                                                    <i class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                                                </div>
+                                                                <span class="color-600 text-body-details">فرآیند
+                                                                    قیمت‌گذاری و
+                                                                    نظارت
+                                                                    بر قیمت</span>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <i
+                                                                    class="buy-box__left-chevron-icon fa fa-chevron-left"></i>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ویژگی ها -->
+                                        <div class="variantInfo-properties px-3 px-lg-0">
+                                            <div class="my-2">
+                                                <div class="d-flex">
+                                                    <div class="d-flex pt-1">
+                                                        <i
+                                                            class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                                    </div>
+                                                    <span class="me-2 feedback-text" id="feedback-text-group"></span>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="feedback-text d-lg-none d-block my-2 d-flex align-items-center justify-content-end">
+                                                گزارش نادرستی مشخصات
+                                                <i
+                                                    class="fa-solid fa-circle-exclamation variantInfo-error-icon me-1"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column pt-5 digiplus-wrapp">
+                                            <span class="d-block">
+                                                <div class="w-100 bg-white pb-3 px-3 digiplus-container">
+                                                    <div
+                                                        class="d-flex flex-row justify-content-center align-items-center">
+                                                        <div class="d-flex ms-2">
+                                                            <i class="fa-solid fa-user-plus digiplus-icon"></i>
+                                                        </div>
+                                                        <div class="w-100 flex-grow-1">
+                                                            <div class="py-2 p-0 w-100">
+                                                                <div class="d-flex align-items-center flex-grow-1">
+                                                                    <p class="flex-grow-1 digiplus-text">ویژه
+                                                                        اعضای
+                                                                        دیجی‌پلاس</p>
+                                                                    <span
+                                                                        class="d-inline-flex align-items-center digiplus-subscription">
+                                                                        <span>خرید اشتراک</span>
+                                                                        <div class="d-flex">
+                                                                            <i
+                                                                                class="see-more me-1 fa fa-chevron-left"></i>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center flex-grow-1">
+                                                        <div class="position-relative d-flex align-items-center justify-content-center align-self-lg-stretch"
+                                                            style="width: 18px; min-width: 18px;">
+                                                            <div class="d-flex mx-1">
+                                                                <i class="info-section__wrapp-icon fa-solid fa-circle fa-2xs"
+                                                                    style="color: #b12ba4;"></i>
+                                                            </div>
+                                                            <span class="bullet-line position-absolute d-block"></span>
+                                                        </div>
+                                                        <h3 class="me-2 digiplus-free">ارسال رایگان</h3>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-none d-lg-block w-345-auto">
+                                        <div class="d-flex flex-column me-lg-2 mb-lg-2">
+                                            <div class=" bg-white buy-box__container" id="seller-details-container">
+                                                <!-- Data Loaded From JS -->
+                                            </div>
+                                            <a href="#" class="w-100 mt-2">
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center py-2 px-3 section-border">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="d-flex ms-2">
+                                                            <i
+                                                                class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                                        </div>
+                                                        <span class="color-600 text-body-details">فرآیند قیمت‌گذاری و
+                                                            نظارت
+                                                            بر قیمت</span>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <i class="buy-box__left-chevron-icon fa fa-chevron-left"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div
+                                                class="w-100 mt-2 d-flex px-5 px-lg-0 pb-3 pb-lg-0 product-info__better-price">
+                                                <div class="d-flex align-items-center justify-content-end me-auto">
+                                                    <p class="better-price-text">قیمت بهتری سراغ دارید؟</p>
+                                                    <div class="d-flex me-2">
+                                                        <i class="better-price-tag-icon fa-solid fa-tag"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 border-top-1 pt-1 pb-2 pb-lg-3 border-bottom-4">
+                    <div class="row row-cols-5 d-lg-flex">
+                        <div class="col py-2">
+                            <a href="#"
+                                class="d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                                <div class="product-footer__icon__wrapp">
+                                    <img src="assets/images/product/product-footer/express-delivery.svg"
+                                        alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                </div>
+                                <p class="footer-icon__caption me-2 color-400">اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس</p>
+                            </a>
+                        </div>
+                        <div class="col py-2">
+                            <a href="#"
+                                class="d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                                <div class="product-footer__icon__wrapp">
+                                    <img src="assets/images/product/product-footer/cash-on-delivery.svg"
+                                        alt="اﻣﮑﺎن پرداخت در محل">
+                                </div>
+                                <p class="footer-icon__caption me-2 color-400">اﻣﮑﺎن پرداخت در محل</p>
+                            </a>
+                        </div>
+                        <div class="col py-2">
+                            <a href="#"
+                                class="d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                                <div class="product-footer__icon__wrapp">
+                                    <img src="assets/images/product/product-footer/support.svg"
+                                        alt="۷ روز ﻫﻔﺘﻪ، ۲۴ ﺳﺎﻋﺘﻪ">
+                                </div>
+                                <p class="footer-icon__caption me-2 color-400">۷ روز ﻫﻔﺘﻪ، ۲۴ ﺳﺎﻋﺘﻪ</p>
+                            </a>
+                        </div>
+                        <div class="col py-2">
+                            <a href="#"
+                                class="d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                                <div class="product-footer__icon__wrapp">
+                                    <img src="assets/images/product/product-footer/days-return.svg"
+                                        alt="هفت روز ضمانت بازگشت کالا">
+                                </div>
+                                <p class="footer-icon__caption me-2 color-400">هفت روز ضمانت بازگشت کالا</p>
+                            </a>
+                        </div>
+                        <div class="col py-2">
+                            <a href="#"
+                                class="d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                                <div class="product-footer__icon__wrapp">
+                                    <img src="assets/images/product/product-footer/support.svg"
+                                        alt="ﺿﻤﺎﻧﺖ اﺻﻞ ﺑﻮدن ﮐﺎﻟﺎ">
+                                </div>
+                                <p class="footer-icon__caption me-2 color-400">ﺿﻤﺎﻧﺖ اﺻﻞ ﺑﻮدن ﮐﺎﻟﺎ</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تبلیغ -->
+                <div class="w-100 d-flex d-lg-none flex-column pb-3 pt-0 px-3" style="background-color: #f1f2f4;">
+                    <span class="d-block">
+                        <div class="w-100 bg-white p-3 border-0 ad-container">
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <div class="d-flex ms-2 ad-img__wrapp">
+                                    <img class="w-100 object-fit-contain d-inline-block"
+                                        src="assets/images/ad/تشک بازی.jpg" alt="">
+                                </div>
+                                <div class="d-flex flex-column w-100 me-2">
+                                    <div class="py-2 p-0 w-100">
+                                        <p class="flex-grow-1 ad-text">
+                                            تشک بازی مدل لی لی یوگیمتس کد 2023
+                                        </p>
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="w-100 d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center text-caption">
+                                                    <div class="ad-text" style="color: #767790;">Ad</div>
+                                                    <div class="d-flex me-1">
+                                                        <i class="w-100 fa-solid fa-volume-high ad-icon"></i>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-start align-items-center me-auto pe-3">
+                                                    <div class="d-flex justify-content-end align-items-center w-100">
+                                                        <span class="product-price ms-1">۱۵۷,۰۰۰</span>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <span class="text-body-3 color-700">تومان</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+
+                <!-- کالاهای مشابه - اسلایدر -->
+                <div
+                    class="d-flex flex-column position-relative overflow-hidden w-100 pt-2 mt-lg-3 pb-3 related-products">
+                    <div class="py-2 px-3">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <p class="flex-grow-1 text-title color-900">کالاهای مشابه</p>
+                        </div>
+                        <div class="mt-2 title__red-line"></div>
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper6">
+                            <div class="swiper-wrapper" id="similar-products__container">
+                                <!-- Similar Products Slider Loaded From JS -->
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev swiper-button-prev6" aria-hidden="true">
+                                <i class="fa-solid fa-chevron-right position-absolute"></i>
+                            </div>
+                            <div class="swiper-button-next swiper-button-next6">
+                                <i class="fa-solid fa-chevron-left position-absolute"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section__tab w-100">
+                    <div class="w-100 d-none d-lg-block bg-white mt-3">
+                        <ul class="d-flex border-bottom-1-e6 position-relative">
+                            <li class="info-section__tab_title color-500 pointer text-body-3 tab-active position-relative px-3 py-2 flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0"
+                                id="product-introduction-title">
+                                معرفی
+                                <div
+                                    class="position-absolute bottom-0 opacity-100 info-section__tab__border-bottom tab-title-bb">
+                                </div>
+                            </li>
+                            <li class="info-section__tab_title color-500 pointer text-body-3 position-relative px-3 py-2 flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0"
+                                id="product-attributes-title">
+                                مشخصات
+                                <div class="position-absolute bottom-0 opacity-100 tab-title-bb"></div>
+                            </li>
+                            <li class="info-section__tab_title color-500 pointer text-body-3 position-relative px-3 py-2 flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0"
+                                id="product-comments-title">
+                                دیدگاه‌ها
+                                <div class="position-absolute bottom-0 opacity-100 tab-title-bb"></div>
+                            </li>
+                            <li class="info-section__tab_title color-500 pointer text-body-3 position-relative px-3 py-2 flex-row align-items-center flex-grow-1 justify-content-center flex-lg-grow-0"
+                                id="product-questions-title">
+                                پرسش‌ها
+                                <div class="position-absolute bottom-0 opacity-100 tab-title-bb"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex w-100">
+                    <!-- Right Col -->
+                    <div class="w-100 flex-grow-1" id="product-introduction-wrapper">
+                        <div class="mt-lg-3 pb-3 px-3 px-lg-0 tab-item" id="product-introduction">
+                            <div class="py-2">
+                                <div class="d-flex align-items-center flex-grow-1">
+                                    <p class="flex-grow-1 text-subtitle-strong color-900">معرفی</p>
+                                </div>
+                                <div class="mt-2 title__red-line"></div>
+                            </div>
+                            <div class="product-intro__text-body collapsed" id="product-introduction-container"></div>
+                            <div class="mt-2 mb-3 pe-0 d-flex align-items-center" id="product-intro-toggle-btn">
+                                <span class="product-intro__sm-text d-inline-flex align-items-center">
+                                    <span id="product-intro-toggle-text">بیشتر</span>
+                                    <div class="d-flex">
+                                        <i class="product-intro__icon me-1 fa fa-chevron-left"></i>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-lg-3 pb-3 px-3 px-lg-0 bt-8 tab-item" id="product-attributes">
+                            <div class="d-none d-lg-block">
+                                <div class="py-2 d-none d-lg-block">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <p class="flex-grow-1 text-subtitle-strong color-900">مشخصات</p>
+                                    </div>
+                                    <div class="mt-2 title__red-line"></div>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex-grow-1">
+                                <div class="d-flex flex-column flex-lg-row pb-3 py-lg-4 specification-box__main">
+                                    <p
+                                        class="flex-shrink-0 mb-3 mb-lg-0 flex-grow-1 text-title color-900 specification-box__title">
+                                        مشخصات</p>
+                                    <div class="w-100 flex-grow-1" id="product-attributes-container">
+                                        <!-- Data Loaded From JS -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="see-more d-inline-flex d-flex mt-2 align-items-center">
+                                <span>مشاهده بیشتر</span>
+                                <div class="d-flex see-more-btn">
+                                    <i class="me-1 fa-solid fa-chevron-left"></i>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <!-- دیدگاه‌ها -->
+                        <div class="mt-lg-3 pb-3 px-3 px-lg-0 bt-8 d-lg-none overflow-hidden">
+                            <div class="py-3">
+                                <div class="d-flex align-items-center flex-grow-1">
+                                    <h2 class="flex-grow-1 text-title color-900">دیدگاه‌ها</h2>
+                                    <p class="all-comments__text">۲۵۳ دیدگاه</p>
+                                </div>
+                            </div>
+                            <div class="d-flex overflow-x-auto overflow-y-hidden hide-scrollbar mb-4">
+                                <article class="px-3 pb-2 pt-2 ms-2 d-flex flex-column comment-section__mobile-box">
+                                    <div class="d-flex align-items-center pt-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="rating__color fa-regular fa-thumbs-up"
+                                                        style="width: 14px;"></i>
+                                                </div>
+                                                <p class="rating__text">پیشنهاد می‌کنم</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="comment-section__mobile-box__paragraph mt-2">زیبا و قشنگه، دخترم خیلی خوشش
+                                        اومده،
+                                        طراحی جالبی داره یک گاو که شیشه شیر دستشه،هم سایبان داره که قابل تنظیم هست و
+                                        جمع میشه ،هم آهنگ میزنه،هم گارد محافظ داره که بچه نیفته که قابلیت جمع شدن
+                                        داره،هم برای بچه هایی که رکاب نمی‌تونن بزنن،جای پا داره،هم دسته برای والدین
+                                        داره که چرخ رو راه ببرن اندازه بزرگ و خوبی داره که تا چند سال قابل استفاده
+                                        هست
+                                    </p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <p class="d-inline comment__question__rating-text">۱۴
+                                            تیر
+                                            ۱۴۰۲</p>
+                                        <div class="m-2 d-flex">
+                                            <svg class="svg-inline--fa fa-circle comment-rate__icon fa-2xs"
+                                                aria-hidden="true" focusable="false" data-prefix="fas"
+                                                data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path>
+                                            </svg><!-- <i class="comment-rate__icon fa-solid fa-circle fa-2xs"></i> Font Awesome fontawesome.com -->
+                                        </div>
+                                        <p class="d-inline comment__question__rating-text">
+                                            علیرضا
+                                            حسین مردی</p>
+                                    </div>
+                                </article>
+                                <article class="px-3 pb-2 pt-2 ms-2 d-flex flex-column comment-section__mobile-box">
+                                    <p class="mobile-box__comment-title">کیفیت افتضاح</p>
+                                    <div class="d-flex align-items-center pt-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="rating__color-unlike fa-regular fa-thumbs-down"
+                                                        style="width: 14px;"></i>
+                                                </div>
+                                                <p class="rating__text-unlike">پیشنهاد نمی‌کنم</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="comment-section__mobile-box__paragraph mt-2">
+                                        به نظرم نهایتن یک سوم این قیمت میرزه
+                                    </p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <p class="d-inline comment__question__rating-text">۱۴
+                                            تیر
+                                            ۱۴۰۲</p>
+                                        <div class="m-2 d-flex">
+                                            <svg class="svg-inline--fa fa-circle comment-rate__icon fa-2xs"
+                                                aria-hidden="true" focusable="false" data-prefix="fas"
+                                                data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path>
+                                            </svg><!-- <i class="comment-rate__icon fa-solid fa-circle fa-2xs"></i> Font Awesome fontawesome.com -->
+                                        </div>
+                                        <p class="d-inline comment__question__rating-text">
+                                            علیرضا
+                                            حسین مردی</p>
+                                    </div>
+                                </article>
+                                <article class="px-3 pb-2 pt-2 ms-2 d-flex flex-column comment-section__mobile-box">
+                                    <div class="d-flex align-items-center pt-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="rating__color fa-regular fa-thumbs-up"
+                                                        style="width: 14px;"></i>
+                                                </div>
+                                                <p class="rating__text">پیشنهاد می‌کنم</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="comment-section__mobile-box__paragraph mt-2">زیبا و قشنگه، دخترم خیلی خوشش
+                                        اومده،
+                                        طراحی جالبی داره یک گاو که شیشه شیر دستشه،هم سایبان داره که قابل تنظیم هست و
+                                        جمع میشه ،هم آهنگ میزنه،هم گارد محافظ داره که بچه نیفته که قابلیت جمع شدن
+                                        داره،هم برای بچه هایی که رکاب نمی‌تونن بزنن،جای پا داره،هم دسته برای والدین
+                                        داره که چرخ رو راه ببرن اندازه بزرگ و خوبی داره که تا چند سال قابل استفاده
+                                        هست
+                                    </p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <p class="d-inline comment__question__rating-text">۱۴
+                                            تیر
+                                            ۱۴۰۲</p>
+                                        <div class="m-2 d-flex">
+                                            <svg class="svg-inline--fa fa-circle comment-rate__icon fa-2xs"
+                                                aria-hidden="true" focusable="false" data-prefix="fas"
+                                                data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path>
+                                            </svg><!-- <i class="comment-rate__icon fa-solid fa-circle fa-2xs"></i> Font Awesome fontawesome.com -->
+                                        </div>
+                                        <p class="d-inline comment__question__rating-text">
+                                            علیرضا
+                                            حسین مردی</p>
+                                    </div>
+                                </article>
+                                <article class="px-3 pb-2 pt-2 ms-2 d-flex flex-column comment-section__mobile-box">
+                                    <p class="mobile-box__comment-title">خیلی عالی</p>
+                                    <div class="d-flex align-items-center pt-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="rating__color fa-regular fa-thumbs-up"
+                                                        style="width: 14px;"></i>
+                                                </div>
+                                                <p class="rating__text">پیشنهاد می‌کنم</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="comment-section__mobile-box__paragraph mt-2">
+                                        خیلی عالی و به موقع ارسال شد و دقیق همان ساعت که خواسته بودم تحویل دادهشد
+                                    </p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <p class="d-inline comment__question__rating-text">۱۴
+                                            تیر
+                                            ۱۴۰۲</p>
+                                        <div class="m-2 d-flex">
+                                            <svg class="svg-inline--fa fa-circle comment-rate__icon fa-2xs"
+                                                aria-hidden="true" focusable="false" data-prefix="fas"
+                                                data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path>
+                                            </svg><!-- <i class="comment-rate__icon fa-solid fa-circle fa-2xs"></i> Font Awesome fontawesome.com -->
+                                        </div>
+                                        <p class="d-inline comment__question__rating-text">
+                                            علیرضا
+                                            حسین مردی</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="d-flex overflow-x-auto overflow-y-hidden hide-scrollbar">
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/1.jpg" alt="">
+                                </div>
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/2.jpg" alt="">
+                                </div>
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/3.jpg" alt="">
+                                </div>
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/4.jpg" alt="">
+                                </div>
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/5.jpg" alt="">
+                                </div>
+                                <div class="me-2 my-2 overflow-hidden comment-section__img">
+                                    <img class="d-inline-block w-100 object-fit-cover"
+                                        src="assets/images/comment-images/6.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex mt-3 align-items-start">
+                                <div class="d-flex ms-3">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                                <div class="d-flex flex-grow-1 align-items-center pb-2">
+                                    <div>
+                                        <p class="comments-title">دیدگاه خود را درباره این کالا بنویسید</p>
+                                        <p class="comment__question__rating-text">۵ امتیاز دیجی‌کلاب<br>پس از تایید شدن
+                                            دیدگاه، با رفتن به صفحه ماموریت‌های دیجی‌کلاب امتیازتان را دریافت کنید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- امتیاز و دیدگاه کاربران -->
+                        <div class="mt-lg-3 pb-3 px-3 px-lg-0 bt-8 d-none d-lg-block tab-item" id="product-comments">
+                            <div class="mt-lg-4 pb-3 ProductContent__sectionBorder">
+                                <div class="d-none d-lg-block">
+                                    <div class="py-2 d-none d-lg-block">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <p class="flex-grow-1 text-subtitle-strong color-900">امتیاز و دیدگاه
+                                                کاربران</p>
+                                        </div>
+                                        <div class="mt-2 title__red-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-stretch mt-2">
+
+                                <!-- Col-Right -->
+                                <div class="position-sticky">
+                                    <div class="d-lg-block comment__question">
+                                        <div class="d-flex align-items-center">
+                                            <p class="comment__question__rating-title ms-1" id="product-user-score">۳.۹</p>
+                                            <p class="mb-0 comment__question__rating-text" style="color: #000;">از ۵</p>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex flex-nowrap" id="product-score-container">
+                                                <!-- Data Loaded From JS -->
+                                            </div>
+                                        </div>
+                                        <p class="comment-question__submit-text mt-4 mb-3">شما هم درباره این کالا دیدگاه ثبت
+                                            کنید</p>
+                                        <button class="comment-question__submit-btn d-flex align-items-center mt-2"
+                                            id="add-comment">
+                                            <div class="d-flex align-items-center justify-content-center flex-grow-1">ثبت
+                                                دیدگاه
+                                            </div>
+                                        </button>
+                                        <div class="mt-3">
+                                            <div class="d-flex">
+                                                <div class="ms-2">
+                                                    <i class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                                </div>
+                                                <p class="comment-question__text-bottom">
+                                                    ۵ امتیاز دیجی‌کلاب<br>پس از تایید شدن دیدگاه، با رفتن به صفحه
+                                                    ماموریت‌های
+                                                    دیجی‌کلاب امتیازتان را دریافت کنید.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Col Left -->
+                                <div class="flex-grow-1" style="min-width: 0;">
+                                    <div>
+                                        <div class="d-flex align-items-center pt-4">
+                                            <div
+                                                class="d-flex align-items-center justify-content-center ms-2 variantInfo-like-icon">
+                                                <i class="fa-regular fa-thumbs-up"></i>
+                                            </div>
+                                            <p class="ms-2 comment-question__left-title">
+                                                ۷۸% (۱۵۰ نفر) از خریداران، این کالا را پیشنهاد کرده‌اند
+                                            </p>
+                                            <div class="ms-2 pointer" id="comment__tooltip">
+                                                <i class="fa-solid fa-circle-exclamation variantInfo-error-icon"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <div class="d-flex align-items-center py-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="fa-solid fa-arrow-down-wide-short sort-icon"></i>
+                                                </div>
+                                                <p class="sort-text">مرتب سازی:</p>
+                                            </div>
+                                            <div class="header-sort__title me-3">
+                                                <span
+                                                    class="ms-2 header-sort__text comment-sorting header-sort__text-active"
+                                                    data-key="newest">جدید‌ترین</span>
+                                                <span class="ms-2 header-sort__text comment-sorting"
+                                                    data-key="default">دیدگاه خریداران</span>
+                                                <span class="ms-2 header-sort__text comment-sorting"
+                                                    data-key="most-helpful">مفیدترین</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex me-auto">
+                                            <span class="header-sort__text" id="all-comments"></span>
+                                        </div>
+                                    </div>
+                                    <div id="product-comments-container">
+                                        <!-- Data Loaded From JS -->
+                                    </div>
+                                    <div class="d-flex w-100 bg-white border-t-200 py-2 justify-content-between">
+                                        <div class="font-body hidden d-flex align-items-center justify-content-center color-primary-700 ms-2 pe-3"
+                                            id="comment-prev-page">
+                                            <div class="d-flex ms-2">
+                                                <i class="fa fa-chevron-right"
+                                                    style="width: 10px; height: 10px; color: #ef4056;"></i>
+                                            </div>
+                                            <span class="ms-2 text-body2-strong d-md-inline-block">قبلی</span>
+                                        </div>
+                                        <div class="font-body d-flex justify-content-center align-items-center"
+                                            id="paginated-container">
+
+                                        </div>
+                                        <div class="font-body hidden d-flex align-items-center justify-content-center color-primary-700 me-2 ps-3 flex-row-reverse"
+                                            id="comment-next-page">
+                                            <div class="d-flex ms-2">
+                                                <i class="fa fa-chevron-left"
+                                                    style="width: 10px; height: 10px; color: #ef4056;"></i>
+                                            </div>
+                                            <span class="ms-2 text-body2-strong d-md-inline-block">بعدی</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- پرسش‌ها lg -->
+                        <div class="bb-8 mt-lg-3 pb-3 px-3 px-lg-0 bt-8 d-none d-lg-block ProductContent__sectionBorder tab-item"
+                            id="product-questions">
+                            <div class="d-none d-lg-block">
+                                <div class="py-2 d-none d-lg-block">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <p class="flex-grow-1 text-title color-900">پرسش‌ها</p>
+                                    </div>
+                                    <div class="mt-2 title__red-line"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-stretch mt-2">
+                                <!-- Col Right -->
+                                <div class="position-sticky">
+                                    <div class="pb-3 px-2 position-sticky" style="top: 235px;min-width: 240px;">
+                                        <p class="comment-question__submit-text mt-4 mb-3">شما هم درباره این کالا پرسش ثبت
+                                            کنید</p>
+                                        <button class="comment-question__submit-btn d-flex align-items-center mt-2"
+                                            id="add-question">
+                                            <div class="d-flex align-items-center justify-content-center flex-grow-1">
+                                                ثبت پرسش
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Col Left -->
+                                <div class="w-100 me-5">
+                                    <div class="flex-row align-items-center py-3 hidden">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex ms-2">
+                                                    <i class="fa-solid fa-arrow-down-wide-short sort-icon"></i>
+                                                </div>
+                                                <p class="sort-text">مرتب سازی:</p>
+                                            </div>
+                                            <div class="header-sort__title me-3">
+                                                <span
+                                                    class="ms-2 header-sort__text header-sort__text-active">جدید‌ترین</span>
+                                                <span class="ms-2 header-sort__text">مفیدترین</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="product-questions-container">
+                                        <!-- Product Questions Loaded From JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- پرسش و پاسخ -->
+                        <div class="mt-lg-3 pb-3 px-3 px-lg-0 bt-8 d-lg-none overflow-hidden">
+                            <div class="py-3">
+                                <div class="d-flex align-items-center flex-grow-1">
+                                    <h2 class="flex-grow-1 text-title color-900">پرسش و پاسخ</h2>
+                                    <p class="all-comments__text">۵ پرسش</p>
+                                </div>
+                            </div>
+                            <!-- Product Questions Loaded From JS -->
+                        </div>
+                        
+                        <div class="return-info-background d-lg-none d-block px-3">
+                            <a href="#">
+                                <div class="d-flex align-items-center py-3 border-bottom-1-e6">
+                                    <div class="d-flex ms-4">
+                                        <i class="fa-regular fa-floppy-disk buy-box__disk-icon"></i>
+                                    </div>
+                                    <p class="return-info__text">رویه های بازگشت کالا</p>
+                                    <div class="d-flex me-auto pe-3">
+                                        <i class="buy-box__left-chevron-icon fa fa-chevron-left "></i>
+                                    </div>
+                                </div>
+                                <p class="return-info__text-footer text-center w-100 align-items-center py-3">شناسه
+                                    کالا: DKP-149717</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Left Col -->
+                    <div class="d-block me-5 position-relative mini-buy-box__sticky-container">
+                        <div class="mini-buy-box__sticky" id="mini-buy-box__sticky">
+                            <!-- Data Loaded From JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Footer Section -->
+            <footer class="footer w-100 bg-white">
+                <div class="footer-container mx-auto">
+                    <div class="px-lg-3 px-2">
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <div>
+                                <img src="assets/images/digi-red-logo.svg" alt="">
+                            </div>
+                            <button
+                                class="back-to-up-btn position-relative d-flex align-items-center justify-content-center px-2 px-sm-4 py-1">
+                                <div
+                                    class="d-flex align-items-center justify-content-center position-relative flex-grow-1">
+                                    <span class="back-to-up-text ms-2">بازگشت به بالا</span>
+                                    <div class="d-flex">
+                                        <i class="back-to-up-arrow fa-solid fa-chevron-up"></i>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="mb-5 mt-4 mt-md-3 mb-md-0 d-flex align-items-center flex-wrap flex-lg-nowrap">
+                            <p class="footer-phonenumber footer-text flex-shrink-0">تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱</p>
+                            <div class="light-blue-color px-3 d-none d-md-block">|</div>
+                            <p class="w-100 mt-1 mt-md-0 footer-text">۷ روز هفته، ۲۴ ساعته پاسخگوی شما هستیم</p>
+                        </div>
+                        <div class="row row-cols-5 d-lg-flex d-none my-4">
+                            <div class="col py-3">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="footer-icon__wrapp">
+                                        <img src="assets/images/footer-icon/express-delivery.svg"
+                                            alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                    </div>
+                                    <p class="footer-icon__caption">اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس</p>
+                                </a>
+                            </div>
+                            <div class="col py-3">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="footer-icon__wrapp">
+                                        <img src="assets/images/footer-icon/cash-on-delivery.svg"
+                                            alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                    </div>
+                                    <p class="footer-icon__caption">اﻣﮑﺎن پرداخت در محل</p>
+                                </a>
+                            </div>
+                            <div class="col py-3">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="footer-icon__wrapp">
+                                        <img src="assets/images/footer-icon/support.svg" alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                    </div>
+                                    <p class="footer-icon__caption">۷ روز ﻫﻔﺘﻪ، ۲۴ ﺳﺎﻋﺘﻪ</p>
+                                </a>
+                            </div>
+                            <div class="col py-3">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="footer-icon__wrapp">
+                                        <img src="assets/images/footer-icon/days-return.svg" alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                    </div>
+                                    <p class="footer-icon__caption">هفت روز ضمانت بازگشت کالا</p>
+                                </a>
+                            </div>
+                            <div class="col py-3">
+                                <a href="#" class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="footer-icon__wrapp">
+                                        <img src="assets/images/footer-icon/original-products.svg"
+                                            alt="اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس">
+                                    </div>
+                                    <p class="footer-icon__caption">ﺿﻤﺎﻧﺖ اﺻﻞ ﺑﻮدن ﮐﺎﻟﺎ</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between mb-4">
+                            <div class="col-lg-3 col-6 footer-menu">
+                                <p class="footer-menu__title mb-2 d-block">با دیجی‌کالا</p>
+                                <a href="#" class="footer-menu__item mb-1 d-block">اتاق خبر دیجی‌کالا</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">فروش در دیجی‌کالا</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">فرصت‌های شغلی</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">گزارش تخلف در دیجی‌کالا</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">تماس با دیجی‌کالا</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">درباره دیجی‌کالا</a>
+                            </div>
+                            <div class="col-lg-3 col-6 footer-menu">
+                                <p class="footer-menu__title mb-2 d-block">خدمات مشتریان</p>
+                                <a href="#" class="footer-menu__item mb-1 d-block">پاسخ به پرسش‌های متداول</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">رویه‌های بازگرداندن کالا</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">شرایط استفاده</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">حریم خصوصی</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">گزارش باگ</a>
+                            </div>
+                            <div class="col-lg-3 col-12 footer-menu">
+                                <p class="footer-menu__title mb-2 d-block">راهنمای خرید از دیجی‌کالا</p>
+                                <a href="#" class="footer-menu__item mb-1 d-block">نحوه ثبت سفارش</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">رویه ارسال سفارش</a>
+                                <a href="#" class="footer-menu__item mb-1 d-block">شیوه‌های پرداخت</a>
+                            </div>
+                            <div class="col-lg-3 col-12 footer-menu">
+                                <div
+                                    class="w-100 d-flex flex-column justify-content-between align-items-start mt-3 mt-sm-0">
+                                    <div
+                                        class="d-flex flex-lg-column w-100 align-items-lg-start justify-content-between align-items-center">
+                                        <h4 class="footer-menu__title mb-3">همراه ما باشید!</h4>
+                                        <div class="social-media d-flex align-items-center mb-4">
+                                            <a href="#" class="social-media__link ms-3 ms-lg-4">
+                                                <div class="d-flex justify-content-center align-items-center social-media__icon-wrapp">
+                                                    <i class="social-media__icon fa-brands fa-instagram"></i>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="social-media__link ms-3 ms-lg-4">
+                                                <div class="d-flex justify-content-center align-items-center social-media__icon-wrapp">
+                                                    <i class="social-media__icon fa-brands fa-twitter"></i>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="social-media__link ms-3 ms-lg-4">
+                                                <div
+                                                    class="d-flex justify-content-center align-items-center social-media__icon-wrapp">
+                                                    <i class="social-media__icon fa-brands fa-linkedin"></i>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="social-media__link ms-3 ms-lg-4">
+                                                <div
+                                                    class="d-flex justify-content-center align-items-center social-media__icon-wrapp">
+                                                    <img class="social-media__icon aparat-logo"
+                                                        src="assets/images/aparat-logo.png" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column align-items-center mt-2">
+                                        <h4 class="footer-menu__title w-100 d-none d-md-block mb-lg-3 mb-2">با ثبت
+                                            ایمیل، از جدید‌ترین تخفیف‌ها با‌خبر شوید</h4>
+                                        <div class="w-100 d-flex align-items-center">
+                                            <form action="#" class="p-0 w-100 d-flex align-items-start"
+                                                id="submit-email">
+                                                <div class="w-100 d-flex flex-column">
+                                                    <input class="form-control input-container" id="submit-email__input"
+                                                        type="text" placeholder="ایمیل شما">
+                                                    <p class="text-caption hidden helper--error mt-1">پست الکترونیک وارد شده
+                                                        درست نیست</p>
+                                                </div>
+                                                <button class="submit-email-button disable-email-btn btn disabled me-2">
+                                                    <div
+                                                        class="d-flex align-items-center justify-content-center pointer position-relative flex-grow-1">
+                                                        ثبت</div>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="footer-logo-container d-flex flex-column flex-lg-row mb-5 mb-lg-4 px-lg-3 py-2 align-items-center justify-content-between">
+                            <div class="d-flex align-items-center text-white mb-4 mb-lg-0">
+                                <div class="flex-shrink-0 footer-logo-wrapp">
+                                    <img class="w-100 d-inline-block" src="assets/images/footerlogo2.png"
+                                        alt="دیجی‌کالا">
+                                </div>
+                                <div class="footer-logo-text flex-shrink-0 me-2"> دانلود اپلیکیشن دیجی‌کالا</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                                <div
+                                    class="d-flex align-items-center justify-content-center justify-content-lg-between justify-content-lg-end flex-wrap grow-lg-1">
+                                    <a href="#" class="app-footer__link m-2">
+                                        <div class="app-footer__img-wrapp">
+                                            <img class="app-footer__img" src="assets/images/app-footer/coffe-bazzar.svg"
+                                                alt="دریافت از کافه‌بازار">
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-footer__link m-2">
+                                        <div class="app-footer__img-wrapp">
+                                            <img class="app-footer__img" src="assets/images/app-footer/myket.svg"
+                                                alt="دریافت از مایکت">
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-footer__link m-2">
+                                        <div class="app-footer__img-wrapp">
+                                            <img class="app-footer__img" src="assets/images/app-footer/sib-app.svg"
+                                                alt="دریافت از سیب‌اپ">
+                                        </div>
+                                    </a>
+                                </div>
+                                <a href="#" class="d-none d-lg-block me-4">
+                                    <div class="more-icon__conatainer d-flex justify-content-center align-items-center">
+                                        <img class="w-100 d-inline-block object-fit-cover" src="assets/images/More.svg"
+                                            alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <a class="more-information d-flex w-100 align-items-center justify-content-center d-lg-none mt-1"
+                                href="#">
+                                <span>اطلاعات بیشتر</span>
+                                <div class="d-flex me-2">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div
+                            class="d-flex border-top align-items-center justify-content-between py-4 flex-wrap flex-lg-nowrap">
+                            <div class="flex-grow-1">
+                                <div class="position-relative seo ms-0 ms-lg-5 overflow-hidden">
+                                    <h1><strong>فروشگاه اینترنتی دیجی‌کالا، بررسی، انتخاب و خرید آنلاین.</strong></h1>
+                                    <p>یک<strong> خرید</strong> اینترنتی مطمئن، نیازمند فروشگاهی است که بتواند کالاهایی
+                                        متنوع، باکیفیت و دارای قیمت مناسب را در مدت زمانی کوتاه به دست مشتریان خود
+                                        برساند و ضمانت بازگشت کالا هم داشته باشد؛ ویژگی‌هایی که فروشگاه اینترنتی
+                                        دیجی‌کالا سال‌هاست بر روی آن‌ها کار کرده و توانسته از این طریق مشتریان ثابت خود
+                                        را داشته باشد.</p>
+
+                                    <h2>کدام محصولات در دیجی‌کالا قابل سفارش هستند؟</h2>
+                                </div>
+                                <div class="see-more d-inline-flex d-flex mt-2 align-items-center">
+                                    <span>مشاهده بیشتر</span>
+                                    <div class="d-flex see-more-btn">
+                                        <i class="me-1 fa-solid fa-chevron-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="footer-namad-w w-100 d-flex align-items-center mt-4 mt-lg-0 justify-content-center justify-content-lg-end">
+                                <div
+                                    class="footer-item-border p-2 p-lg-3 d-flex align-items-center justify-content-center me-2">
+                                    <div class="footer-item-img">
+                                        <img class="w-100 d-inline-block object-fit-contain"
+                                            src="assets/images/namad etemad/rezi.png" alt="">
+                                    </div>
+                                </div>
+                                <div
+                                    class="footer-item-border p-2 p-lg-3 d-flex align-items-center justify-content-center me-2">
+                                    <div class="footer-item-img">
+                                        <img class="w-100 d-inline-block object-fit-contain"
+                                            src="assets/images/namad etemad/kasbokar.png" alt="">
+                                    </div>
+                                </div>
+                                <a href="#"
+                                    class="footer-item-border p-2 p-lg-3 d-flex align-items-center justify-content-center me-2">
+                                    <div class="footer-item-img">
+                                        <img class="w-100 d-inline-block object-fit-contain"
+                                            src="assets/images/namad etemad/image-placeholder.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="border-top footer-copyright text-center align-items-center flex-column justify-content-between py-3">
+                            برای استفاده از مطالب دیجی‌کالا، داشتن «هدف غیرتجاری» و ذکر «منبع» کافیست. تمام حقوق اين
+                            وب‌سايت نیز برای شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) است.
+                        </div>
+                    </div>
+                    <div class="w-100 footer-bottom">
+                        <div class="container-4xl-w mx-auto d-flex align-items-start justify-content-end flex-wrap">
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digimag.svg" alt="">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digipay.svg"
+                                        alt="بهترین راهکارهای پرداخت آنلاین">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digistyle.svg"
+                                        alt="خرید آنلاین مد و لباس از فروشگاه اینترنتی دیجی‌استایل با همان تجربه از دیجی‌کالا">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digiplus.svg"
+                                        alt="خدمات ویژه دیجی‌کالا برای کاربران با اشتراک دیجی‌پلاس">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digiclub.svg"
+                                        alt="دیجی کلاب باشگاه مشتریان دیجیکالا">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/jet.svg"
+                                        alt="خرید آنی سوپرمارکتی از فروشگاه های نزدیک">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/magnet.svg"
+                                        alt="مگنت - پلتفرم بررسی و انتخاب کالا">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digiMehr.svg"
+                                        alt="دیجیکالا مهر - زنجیره مهربانی و لبخند">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/fidibo.svg" alt="دانلود کتاب الکترونیک">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/diginext.svg"
+                                        alt="مرکز نوآوری و فناوری گروه دیجی‌کالا">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/pindo.svg"
+                                        alt="ثبت آگهی خرید و فروش آنلاین بدون پادرمیانی!">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/komodaa.svg"
+                                        alt="کمدا اپلیکیشنی برای خرید و فروش">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digiexpress.svg"
+                                        alt="سیستم حمل و نقل دیجی‌کالا">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/ganjeh.svg" alt="گنجه">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digify.svg" alt="دیجی‌فای">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/smartech.svg" alt="اسمارتک">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digikala-business.svg" alt="دیجی‌کالا بیزینس">
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="footer-brand-link px-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                <div class="footer-brand-item">
+                                    <img class="w-100 d-inline-block object-fit-contain"
+                                        src="assets/images/footer-brands/digikala-service.svg" alt="دیجی‌کالا سرویس">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/fa.min.js"></script> -->
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+    <script src="assets/vendor/fontAwesome/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/all.min.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script type="module" src="assets/js/shared.js"></script>
+    <script type="module" src="assets/js/product.js"></script>
+    <script src="assets/vendor/sweetalert.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="assets/js/tooltip.js"></script>
+</body>
+
+</html>
