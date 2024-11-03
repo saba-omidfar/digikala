@@ -1,0 +1,420 @@
+@import "./variables.css";
+@import "./fonts.css";
+
+/* Start Default Styles */
+
+body,
+html {
+    direction: rtl;
+    height: 100%;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+html {
+    box-sizing: border-box;
+    max-width: 100vw;
+    background-color: #fff;
+    scroll-behavior: smooth;
+    font-size: 1.1rem;
+}
+
+
+body {
+    /* font-family: var(--primary-font); */
+    font-family: 'IRANyekan';
+    overflow: auto;
+    background-color: var(--white-color);
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.main {
+    height: auto;
+    min-height: auto;
+}
+
+.header {
+    position: fixed;
+    right: 0;
+}
+
+.container-2xl-w {
+    width: 100%;
+    max-width: 1336px;
+}
+
+* {
+    font-family: 'IRANyekan';
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    transition: all 400ms ease;
+}
+
+i {
+    user-select: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Finish Default Styles */
+
+/* Start Scroll Bar Styles */
+
+body::-webkit-scrollbar {
+    width: 8px
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f1f2f4;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #c3c3ce;
+    border-radius: 16px;
+    width: 8px
+}
+
+/* Start Scroll Bar Styles */
+
+.navigation-menu__category-submenu-container,
+.navigation-menu__category-item {
+    overflow: auto;
+}
+
+.navigation-menu__category-submenu-container::-webkit-scrollbar,
+.navigation-menu__category-item::-webkit-scrollbar {
+    width: 8px
+}
+
+.navigation-menu__category-submenu-container::-webkit-scrollbar-track,
+.navigation-menu__category-item::-webkit-scrollbar-track {
+    background-color: #f1f2f4;
+}
+
+.navigation-menu__category-submenu-container::-webkit-scrollbar-thumb,
+.navigation-menu__category-item::-webkit-scrollbar-thumb {
+    background-color: #c3c3ce;
+    border-radius: 16px;
+    width: 8px
+}
+
+.w-300-345 {
+    width: 300px;
+}
+
+.w-345-auto {
+    width: 345px;
+    min-width: 345px;
+    max-width: 300px;
+}
+
+.border-radius-8 {
+    border-radius: 8px;
+}
+
+.border-all {
+    border: 1px solid #e0e0e6;
+}
+
+.border-all-f0 {
+    border: 1px solid #f0f0f1;
+}
+
+.border-bottom-f0 {
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.border-left-f1 {
+    border-left: 1px solid #f1f2f4;
+}
+
+.border-bottom-f1 {
+    border-bottom: 1px solid #f1f2f4;
+}
+
+.border-top-1-e6 {
+    border-top: 1px solid #e0e0e6;
+}
+
+.border-bottom-1-e6 {
+    border-bottom: 1px solid #e0e0e6;
+}
+
+.border-bottom-4 {
+    border-bottom: 4px solid #f1f2f4;
+}
+
+.border-bottom-0 {
+    border-bottom: none !important;
+}
+
+.border-bottom-1 {
+    border-bottom: 1px solid #f1f2f4 !important;
+}
+
+.title__red-line {
+    width: 4rem;
+    height: 2px;
+    background-color: #ef394e;
+}
+
+.text-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2.15;
+}
+
+.color-100 {
+    color: #f1f2f4;
+}
+
+.color-200 {
+    color: #e0e0e6;
+}
+
+.color-300 {
+    color: #c3c3ce;
+}
+
+.color-400 {
+    color: #9e9fb1;
+}
+
+.color-500 {
+    color: #767790;
+}
+
+.color-600 {
+    color: #5a5c7a;
+}
+
+.color-700 {
+    color: #3f4064;
+}
+
+.color-800 {
+    color: #23254e;
+}
+
+.color-900 {
+    color: #080a38;
+}
+
+.color-1000 {
+    color: #0c0c0c;
+}
+
+.text-neutral-600 {
+    color: #62666d;
+}
+
+.color-neutral-500 {
+    color: #81858b;
+}
+
+.color-plus-500 {
+    color: #b12ba4;
+}
+
+.color-primary-500 {
+    color: #ef4056;
+}
+
+.color-primary-700 {
+    color: #ef394e;
+}
+
+.color-secondary-500 {
+    color: #19bfd3;
+}
+
+.text-caption {
+    font-size: .7rem;
+    font-weight: 400;
+    line-height: 2.17;
+}
+
+.text-title {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2.17;
+}
+
+.text-subtitle-strong {
+    font-size: .9rem;
+    font-weight: 700;
+    line-height: 2.15;
+}
+
+.text-h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 2.1;
+}
+
+.text-h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 2.1;
+}
+
+.text-h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 2.12;
+}
+
+.text-h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 2.15;
+}
+
+.text-body-1 {
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 2.17;
+}
+
+.text-body-2 {
+    font-size: .83rem;
+    font-weight: 400;
+    line-height: 2.17;
+}
+
+.text-body-3 {
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 2.12;
+}
+
+.text-body1-strong {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2.15;
+}
+
+.text-body2-strong {
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 2.15;
+}
+
+.text-h2-extra {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 2.1;
+}
+
+.content-style h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2.1;
+}
+
+.content-style h2 {
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 2.15;
+}
+
+.visiblity-hidden {
+    visibility: hidden;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Sweet Alert Styles */
+
+.swal-title {
+    color: #080a38;
+    font-weight: 600;
+    text-transform: none;
+    position: relative;
+    display: block;
+    padding: 13px 39px;
+    font-size: 19px;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.swal-icon--warning {
+    border-color: #ef394e !important;
+}
+
+.swal-icon--warning__body,
+.swal-icon--warning__dot {
+    background-color: #ef394e;
+}
+
+
+
+.swal-button--cancel:not([disabled]):hover {
+    background-color: #fff3f3;
+}
+
+.swal-button--cancel:active {
+    background-color: #d7d7d7
+}
+
+
+
+.swal-button:not([disabled]):not(.swal-button--cancel):hover {
+    background-color: #ef394e;
+    color: #fff;
+}
+
+.swal-button--cancel {
+    color: #ef394e;
+    background-color: #fff;
+    border: 1px solid #ef394e;
+}
+
+.swal-button .swal-button--cancel:active {
+    background-color: #ffeeee;
+}
+
+.swal-button--confirm {
+    background-color: #ef394e;
+    color: #fff;
+}
+
+.swal-button .swal-button--confirm:hover {
+    background-color: #ffe7e7;
+}
+
+.swal-button:focus {
+    outline: none;
+    box-shadow: none
+}
+
+.text-hint-text-error {
+    color: #b2001a;
+    font-size: 10px
+}
