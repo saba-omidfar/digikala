@@ -43,7 +43,7 @@ app.use("/products-user", productsUserRouter); // تغییر نام
 app.use("/basket", basketRouter);
 app.use("/user", userProductsViewRouter);
 
-// اتصال به MongoDB
+
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB Atlas');
@@ -54,5 +54,5 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   })
   .catch(err => {
     console.error('Error connecting to MongoDB Atlas', err);
-    process.exit(1); // خروج از برنامه در صورت بروز خطا
+    process.exit(1);
   });
