@@ -1,0 +1,9 @@
+{
+    "app": "my-backend",
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+  
