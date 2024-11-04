@@ -1,8 +1,6 @@
 import { getUserBasketCountAndShowModal, showEmptyBasket } from "./shared.js"
 import { getUserID, isLogin, showSwal } from "./utils.js"
 
-const mainURL = "https://digikala.liara.run/"
-
 const isUserLogin = isLogin()
 const supportOnlineBtn = document.querySelector('.support-btn__online')
 const supportPageTwo = document.querySelector('.support-page__two')
@@ -12,7 +10,7 @@ const getAndShowAllHeaderSliders = async () => {
 
     const headerSliderContainer = document.querySelector('#header-slider-container')
 
-    const res = await fetch(`${mainURL}/header-slider`)
+    const res = await fetch(`http://localhost:5000/header-slider`)
     const headerSlides = await res.json()
 
     headerSliderContainer.innerHTML = ''
@@ -32,7 +30,7 @@ const getAndShowAllServices = async () => {
 
     const servicesContainer = document.getElementById('services-container')
 
-    const res = await fetch(`${mainURL}/services`)
+    const res = await fetch(`http://localhost:5000/services`)
     const services = await res.json()
 
     servicesContainer.innerHTML = '';
@@ -68,7 +66,7 @@ const showMoreServices = async () => {
     const showMoreServicesWrapper = document.querySelector('#show-more-services-wrapper')
     const digikalaGroupServicesWrapper = document.querySelector('#digikala-group-services-wrapper')
 
-    const res = await fetch(`${mainURL}/services`)
+    const res = await fetch(`http://localhost:5000/services`)
     const services = await res.json()
 
     let shuffledServices = [...services].sort((a, b) => .5 - Math.random())
@@ -141,7 +139,7 @@ const getAndShowAllIncredibleOffers = async () => {
     const incredibleProductsContainer = document.querySelector('.incredible-products')
     const showMoreIncredibleOffersIcon = document.querySelector('.incredible-products__btn-text')
 
-    const res = await fetch(`${mainURL}/incridble-offers`)
+    const res = await fetch(`http://localhost:5000/incridble-offers`)
     const incredibleOffers = await res.json()
 
     incredibleOffersContainer.innerHTML = ''
@@ -267,7 +265,7 @@ const getAndShowAllAdBanners = async () => {
     const bannersWrapper = document.querySelector('#banners-wrapper')
     const digikalaBannersContainer = document.querySelector('#digikala-banners-container')
 
-    const res = await fetch(`${mainURL}/ads`)
+    const res = await fetch(`http://localhost:5000/ads`)
     const ads = await res.json()
 
     adBannersContainer.innerHTML = '',
@@ -303,7 +301,7 @@ const getAndShowAllCategories = async () => {
 
     const categoriesContainer = document.querySelector('#categories-container')
 
-    const res = await fetch(`${mainURL}/categories`)
+    const res = await fetch(`http://localhost:5000/categories`)
     const categories = await res.json()
 
     categories.forEach(category => {
@@ -325,7 +323,7 @@ const getAndShowAllPopularBrands = async () => {
 
     const popularBrandsContainer = document.querySelector('#popular-brands-container')
 
-    const res = await fetch(`${mainURL}/popular-brands`)
+    const res = await fetch(`http://localhost:5000/popular-brands`)
     const popularBrands = await res.json()
 
     popularBrandsContainer.innerHTML = ''
@@ -353,7 +351,7 @@ const getAndShowUserBasketModalInOtherPages = async () => {
 
         const userID = getUserID()
 
-        const response = await fetch(`${mainURL}/basket/${userID}`)
+        const response = await fetch(`http://localhost:5000/basket/${userID}`)
         const userBasket = await response.json()
 
         if (userBasket) {
@@ -369,7 +367,7 @@ const addProductToUserBasket = async (product) => {
     if (isUserLogin) {
 
         let userID = getUserID()
-        fetch(`${mainURL}/basket/${userID}`, {
+        fetch(`http://localhost:5000/basket/${userID}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -377,11 +375,11 @@ const addProductToUserBasket = async (product) => {
             body: JSON.stringify({ _id: product._id })
         })
 
-        fetch(`${mainURL}/product/${product.shortName}`)
+        fetch(`http://localhost:5000/product/${product.shortName}`)
             .then(res => res.json())
             .then(product => {
 
-                fetch(`${mainURL}/basket/${userID}`)
+                fetch(`http://localhost:5000/basket/${userID}`)
                     .then(res => res.json())
                     .then(userBasket => {
 
@@ -416,21 +414,21 @@ const deleteProductFromBasket = async (productID) => {
     const userID = getUserID()
 
     if (userID) {
-        const res = await fetch(`${mainURL}/basket/${userID}/${productID}`, {
+        const res = await fetch(`http://localhost:5000/basket/${userID}/${productID}`, {
             method: 'DELETE'
         })
         const updatedBasket = await res.json()
 
-        const response = await fetch(`${mainURL}/product/id/${productID}`)
+        const response = await fetch(`http://localhost:5000/product/id/${productID}`)
 
         if (updatedBasket.Products.length) {
-            fetch(`${mainURL}/basket/${userID}`)
+            fetch(`http://localhost:5000/basket/${userID}`)
                 .then(res => res.json())
                 .then(userBasket => {
                     getUserBasketCountAndShowModal(userBasket)
                 })
         } else {
-            fetch(`${mainURL}/basket/${userID}`)
+            fetch(`http://localhost:5000/basket/${userID}`)
                 .then(res => res.json())
                 .then(userBasket => {
                     getUserBasketCountAndShowModal(userBasket)
@@ -445,13 +443,13 @@ const decreaseProductQuantity = async (productID) => {
     const userID = getUserID()
 
     if (userID) {
-        const res = await fetch(`${mainURL}/basket/${userID}/${productID}`, {
+        const res = await fetch(`http://localhost:5000/basket/${userID}/${productID}`, {
             method: 'PATCH'
         })
 
-        const response = await fetch(`${mainURL}/product/id/${productID}`)
+        const response = await fetch(`http://localhost:5000/product/id/${productID}`)
 
-        fetch(`${mainURL}/basket/${userID}`)
+        fetch(`http://localhost:5000/basket/${userID}`)
             .then(res => res.json())
             .then(userBasket => {
                 getUserBasketCountAndShowModal(userBasket)
